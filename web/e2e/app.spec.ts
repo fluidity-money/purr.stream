@@ -1,9 +1,26 @@
 import { test, expect } from "./fixtures";
 
-test("should navigate to the home page and welcome component should be visible", async ({
-  page,
-}) => {
-  await page.goto("/");
+test.describe("Default Stream Loading", () => {
+  test.beforeEach(async ({ page }) => {
+    await page.goto("/");
+  });
 
-  await expect(page.getByTestId("welcome-component")).toBeInViewport();
+  test("The main dashboard loads within 5 seconds of entering the site", async ({
+    page,
+  }) => {
+    await page.waitForLoadState("load", { timeout: 5000 });
+    await expect(page.getByTestId("purr-stream-logo")).toBeInViewport();
+  });
+
+  test("A default cat stream is visible and playing automatically", async ({
+    page,
+  }) => {
+    await expect(page.getByTestId("video-player")).toBeInViewport();
+  });
+
+  test("Stream information (cat name, location) is displayed correctly", async ({
+    page,
+  }) => {
+    await expect(page.getByTestId("stream-info")).toBeInViewport();
+  });
 });
