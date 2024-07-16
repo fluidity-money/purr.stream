@@ -1,6 +1,17 @@
-name: test
+name: Smart Contract Tests
 
-on: workflow_dispatch
+on:
+  push:
+    branches:
+    - main
+    - development
+    paths: 
+    - 'pkg/**'
+    - '.github/workflows/tests-contract.yml'
+  pull_request:
+    branches:
+    - main
+    - development
 
 env:
   FOUNDRY_PROFILE: ci
