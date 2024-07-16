@@ -9,6 +9,9 @@
 # testing
 /coverage
 /jest-coverage
+/.v8-coverage
+/playwright-coverage
+/test-results
 
 # next.js
 /.next/

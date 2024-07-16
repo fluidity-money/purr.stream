@@ -11,6 +11,10 @@
     {
       "files": "__tests__/**",
       "extends": "plugin:jest/recommended"
-    }
+    }, 
+    {
+      "files": "e2e/**",
+      "extends": "plugin:playwright/recommended"
+    }  
   ]
 }
