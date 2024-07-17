@@ -1,5 +1,14 @@
-import { streams } from "@/streams";
+"use client";
+
+import { useStreamStore } from "@/stores/streamStore";
+import CameraSwitch from "./cameraSwitch";
 
 export default function StreamDetail() {
-  return <div data-test="stream-info">{streams[0].name}</div>;
+  const selectedStream = useStreamStore((state) => state.selectedStream);
+  return (
+    <div data-test="stream-info">
+      {selectedStream.name}
+      <CameraSwitch />
+    </div>
+  );
 }

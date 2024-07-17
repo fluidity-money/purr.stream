@@ -36,3 +36,5 @@ export const streams = [
     hash: "04b10a1fdc7a10ba730bef5e8d2b222ebe73ba5717b3e3c1811dbbb029121011",
   },
 ] as const;
+
+export const streamCameras = ["front", "behind", "above"] as const;

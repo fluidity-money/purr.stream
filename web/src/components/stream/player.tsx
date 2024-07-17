@@ -1,5 +1,9 @@
-import { streams } from "@/streams";
+"use client";
+
+import { useStreamStore } from "@/stores/streamStore";
 export default function StreamPlayer() {
+  const selectedStream = useStreamStore((state) => state.selectedStream);
+
   return (
     <video
       data-test="video-player"
@@ -9,7 +13,10 @@ export default function StreamPlayer() {
       controls
       autoPlay
     >
-      <source src={streams[1].behind} type="application/x-mpegURL" />
+      <source
+        src={selectedStream.cameraStreamUrl}
+        type="application/x-mpegURL"
+      />
       Your browser does not support the video tag.
     </video>
   );
