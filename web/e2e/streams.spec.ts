@@ -12,10 +12,24 @@ test.describe("Default Stream Loading", () => {
     await expect(page.getByTestId("purr-stream-logo")).toBeInViewport();
   });
 
-  test("A default cat stream is visible and playing automatically", async ({
+  test("A default cat stream is visible and playing automatically muted", async ({
     page,
   }) => {
-    await expect(page.getByTestId("video-player")).toBeInViewport();
+    const videoPlayer = page.getByTestId("video-player");
+
+    await expect(videoPlayer).toBeInViewport();
+
+    const { isPlaying, isMuted } = await videoPlayer.evaluate(
+      (video: HTMLVideoElement) => {
+        return {
+          isPlaying: video.isConnected,
+          isMuted: video.muted,
+        };
+      },
+    );
+
+    expect(isPlaying).toBe(true);
+    expect(isMuted).toBe(true);
   });
 
   test("Stream information (cat name, location) is displayed correctly", async ({
