@@ -1,5 +1,6 @@
 import { useStreamStore } from "@/stores/streamStore";
 import { streamCameras } from "@/streams";
+import clsx from "clsx";
 
 function CameraSwithButton({
   camera,
@@ -13,7 +14,10 @@ function CameraSwithButton({
   return (
     <li
       onClick={handleSelect}
-      className={selectedCamera.cameraType === camera ? "underline" : ""}
+      className={clsx(
+        selectedCamera.cameraType === camera && "underline",
+        "cursor-pointer",
+      )}
     >
       {camera}
     </li>

@@ -9,5 +9,9 @@ export default function StreamItem({
   const selectStream = useStreamStore((state) => state.selectStream);
   const handleSelect = () => selectStream(data.hash);
 
-  return <li onClick={handleSelect}>{data.name}</li>;
+  return (
+    <li className="cursor-pointer" onClick={handleSelect}>
+      {data.name}
+    </li>
+  );
 }

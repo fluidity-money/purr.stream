@@ -17,6 +17,7 @@
     "format:check": "prettier --check 'src/**/*.{ts,tsx,js,jsx,json,css,md}'"
   },
   "dependencies": {
+    "clsx": "^2.1.1",
     "hls.js": "1.5.14-0.canary.10440",
     "next": "14.2.5",
     "react": "^18",
