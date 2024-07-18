@@ -37,4 +37,4 @@ export const streams = [
   },
 ] as const;
 
-export const streamCameras = ["front", "behind", "above"] as const;
+export const streamCameras = ["front", "above", "behind"] as const;
