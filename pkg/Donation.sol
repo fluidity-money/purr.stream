@@ -4,7 +4,7 @@ pragma solidity 0.8.16;
 
 import {IDonation} from "./IDonation.sol";
 
-interface ERC20 {
+interface IERC20 {
     function transferFrom(address _sender, uint256 _amount) external;
 }
 
@@ -29,7 +29,7 @@ contract Donation {
     /**
      * @notice wspn to take from the user for transferring.
      */
-    ERC20 private wspn_;
+    IERC20 private wspn_;
 
     /**
      * @notice donationEpoch_ that we're currently up to. Used to know
@@ -67,9 +67,10 @@ contract Donation {
 
     /* SETUP FUNCTIONS */
 
-    function init(address _operator) external {
+    function init(address _operator, address _erc20) external {
         require(version_ == 0, "initialised");
         operator_ = _operator;
+        wspn_ = IERC20(_erc20);
     }
 
     /* OPERATOR FUNCTIONS */
@@ -121,6 +122,10 @@ contract Donation {
         if (startCursor == type(uint128).max) startCursor = leaderboardPositions_.length-1;
         // Start at rightmost of the array, and start to work our way backwards.
         for (uint i = startCursor; i >= 0; --i) {
+            if (i == 0) {
+                leaderboardPositions_[i] = msg.sender;
+                break; // Looks like we're first. It's time to put us in, then stop.
+            }
             // Compare the value under the current cursor with the user's accumulated donation.
             Position storage cursor = positions_[leaderboardPositions_[i]][donationEpoch_];
             if (donated > cursor.donated) {
