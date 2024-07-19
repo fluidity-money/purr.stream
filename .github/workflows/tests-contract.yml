@@ -3,14 +3,12 @@ name: Smart Contract Tests
 on:
   push:
     branches:
-    - main
     - development
-    paths: 
+    paths:
     - 'pkg/**'
     - '.github/workflows/tests-contract.yml'
   pull_request:
     branches:
-    - main
     - development
 
 env:

@@ -2,17 +2,15 @@ name: Lint and Format Web App
 
 on:
   push:
-    branches: 
-    - main
+    branches:
     - development
-    paths: 
+    paths:
     - 'web/e2e/**'
     - 'web/__tests__/**'
     - 'web/src/**'
     - '.github/workflows/lint-format-js.yml'
   pull_request:
-    branches: 
-    - main
+    branches:
     - development
 
 jobs:
@@ -37,7 +35,7 @@ jobs:
 
       - name: Check Linting
         run: pnpm lint:next && pnpm lint:tests
-      
+
       - name: Check Formating
         run: pnpm format:check
 
