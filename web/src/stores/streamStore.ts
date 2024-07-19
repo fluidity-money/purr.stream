@@ -4,46 +4,50 @@ import { persist } from "zustand/middleware";
 
 type CameraType = (typeof streamCameras)[number];
 interface StreamStore {
-  selectedStream: {
-    hash: string;
+  selectedStream: Omit<
+    (typeof streams)[number],
+    "front" | "above" | "behind"
+  > & {
     cameraStreamUrl: string;
     cameraType: CameraType;
-    name: string;
   };
-  selectStream: (streamHash: string) => void;
-  selectCamera: (streamCamera: CameraType) => void;
+  selectStream: (index: number) => void;
+  toggleNextCamera: () => void;
 }
 
 export const useStreamStore = create<StreamStore>()(
   persist(
     (set) => ({
       selectedStream: {
+        ...streams[0],
         cameraStreamUrl: streams[0].front,
-        cameraType: "front",
-        hash: streams[0].hash,
-        name: streams[0].name,
+        cameraType: streamCameras[0],
       },
-      selectStream: (streamHash: string) =>
+      selectStream: (index: number) =>
         set({
           selectedStream: {
-            hash: streamHash,
-            // we assert not null because not possible to get undefined value
-            cameraStreamUrl: streams.find((item) => item.hash === streamHash)!
-              .front,
-            cameraType: "front",
-            name: streams.find((item) => item.hash === streamHash)!.name,
+            ...streams[index],
+            cameraStreamUrl: streams[index][streamCameras[0]],
+            cameraType: streamCameras[0],
           },
         }),
-      selectCamera: (streamCamera: CameraType) =>
-        set((state) => ({
-          selectedStream: {
-            ...state.selectedStream,
-            cameraType: streamCamera,
-            cameraStreamUrl: streams.find(
-              (item) => item.hash === state.selectedStream.hash,
-            )![streamCamera],
-          },
-        })),
+      toggleNextCamera: () =>
+        set((state) => {
+          const currIdx = streamCameras.findIndex(
+            (camera) => camera === state.selectedStream.cameraType,
+          );
+          const nextIdx = (currIdx + 1) % streamCameras.length;
+
+          return {
+            selectedStream: {
+              ...state.selectedStream,
+              cameraType: streamCameras[nextIdx],
+              cameraStreamUrl: streams.find(
+                (item) => item.hash === state.selectedStream.hash,
+              )![streamCameras[nextIdx]],
+            },
+          };
+        }),
     }),
     {
       name: "stream-storage",

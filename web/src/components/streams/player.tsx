@@ -3,6 +3,7 @@
 import { useStreamStore } from "@/stores/streamStore";
 import { useEffect, useRef } from "react";
 import Hls from "hls.js";
+import CameraSwithButton from "./cameraSwitchButton";
 
 export default function StreamPlayer() {
   const selectedStream = useStreamStore((state) => state.selectedStream);
@@ -28,16 +29,21 @@ export default function StreamPlayer() {
   }, [selectedStream.cameraStreamUrl]);
 
   return (
-    <video
-      ref={videoRef}
-      data-test="video-player"
-      width="640"
-      height="360"
-      controls
-      autoPlay
-      playsInline
-      loop
-      muted
-    />
+    <div className="relative h-[360px] w-[640px]">
+      <video
+        ref={videoRef}
+        data-test="video-player"
+        width="640"
+        height="360"
+        autoPlay
+        playsInline
+        loop
+        muted
+        className="rounded-lg"
+      />
+      <div className="absolute bottom-2 left-2">
+        <CameraSwithButton />
+      </div>
+    </div>
   );
 }

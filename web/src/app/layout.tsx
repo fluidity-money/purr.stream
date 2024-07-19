@@ -1,9 +1,9 @@
 import type { Metadata } from "next";
 import localFont from "next/font/local";
-
 import "./globals.css";
 import Header from "@/components/header";
 import clsx from "clsx";
+import Footer from "@/components/footer";
 
 const satoshi = localFont({
   src: [
@@ -34,9 +34,16 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className={clsx(satoshi.className, satoshi.variable)}>
+      <body
+        className={clsx(
+          satoshi.className,
+          satoshi.variable,
+          "bg-stone-900 px-[90px] pb-[50px] pt-[80px] text-white",
+        )}
+      >
         <Header />
         <main>{children}</main>
+        <Footer />
       </body>
     </html>
   );
