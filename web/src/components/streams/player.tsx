@@ -4,6 +4,8 @@ import { useStreamStore } from "@/stores/streamStore";
 import { useEffect, useRef } from "react";
 import Hls from "hls.js";
 import CameraSwithButton from "./cameraSwitchButton";
+import FavButton from "../favorites/favButton";
+import CopyUrlButton from "./copyUrlButton";
 
 export default function StreamPlayer() {
   const selectedStream = useStreamStore((state) => state.selectedStream);
@@ -41,8 +43,10 @@ export default function StreamPlayer() {
         muted
         className="rounded-lg"
       />
-      <div className="absolute bottom-2 left-2">
+      <div className="absolute bottom-2 left-2 flex gap-1">
         <CameraSwithButton />
+        <FavButton />
+        <CopyUrlButton />
       </div>
     </div>
   );
