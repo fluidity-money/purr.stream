@@ -5,14 +5,12 @@ import clsx from "clsx";
 import { country2Flag } from "../../utils/country2";
 export default function StreamItem({
   data,
-  index,
 }: {
   data: (typeof streams)[number];
-  index: number;
 }) {
   const selectStream = useStreamStore((state) => state.selectStream);
   const selectedStream = useStreamStore((state) => state.selectedStream);
-  const handleSelect = () => selectStream(index);
+  const handleSelect = () => selectStream(data.hash);
   const isSelected = selectedStream.hash === data.hash;
   return (
     <li
