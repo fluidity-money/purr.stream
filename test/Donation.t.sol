@@ -26,8 +26,12 @@ contract DonationTest is Test {
     }
 
     function testMakeDonation() public {
-        vm.prank(addrSender);
+        vm.startPrank(addrSender);
         erc20.approve(address(donation), type(uint256).max);
         donation.makeDonation(CAT_1, 10000);
+        assertEq(donation.leaderboardCats_(0), CAT_1);
+        donation.makeDonation(CAT_1, 20000);
+        donation.makeDonation(CAT_2, 40000);
+        assertEq(donation.leaderboardCats_(0), CAT_2);
     }
 }

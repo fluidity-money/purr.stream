@@ -1,11 +1,10 @@
 // SPDX-Identifier: MIT
-
 pragma solidity 0.8.16;
 
 import {IDonation} from "./IDonation.sol";
 
 interface IERC20 {
-    function transferFrom(address _sender, uint256 _amount) external;
+    function transferFrom(address _sender, address _recipient, uint256 _amount) external;
 }
 
 /**
@@ -44,8 +43,6 @@ contract Donation {
      */
     mapping (address => mapping(uint => Position)) positions_;
 
-    mapping (address => uint128) private positionsLen_;
-
     /**
      * @notice cats_ invested in by users. Follows the same UX as the positions_
      * array.
@@ -57,13 +54,7 @@ contract Donation {
     /**
      * @notice leaderboardCats_ that's available to rank the cats.
      */
-    bytes8[] leaderboardCats_;
-
-    /**
-     * @notice leaderboardPositions_ that's used to track positions created by
-     *         users for this current epoch.
-     */
-    address[] leaderboardPositions_;
+    bytes8[] public leaderboardCats_;
 
     /* SETUP FUNCTIONS */
 
@@ -71,6 +62,9 @@ contract Donation {
         require(version_ == 0, "initialised");
         operator_ = _operator;
         wspn_ = IERC20(_erc20);
+        // If we set the donation epoch to 1, then we force everyone to
+        // start from scratch the first time.
+        donationEpoch_ = 1;
     }
 
     /* OPERATOR FUNCTIONS */
@@ -92,16 +86,10 @@ contract Donation {
 
         // First, check if the arrays lengths are max uint128, and if they are, then flag it with a
         // revert (we were griefed and need an upgrade or something.)
-        require(leaderboardPositions_.length != uint(type(uint128).max), "positions griefed");
         require(leaderboardCats_.length != uint(type(uint128).max), "cats griefed");
 
         require(_amount > MIN_DONATION, "amount is 0");
-
-        // Keep the user's position updated to the current epoch.
-        if (positionsLen_[msg.sender] != donationEpoch_) {
-            positionsLen_[msg.sender] = donationEpoch_;
-            positions_[msg.sender][donationEpoch_].position = type(uint128).max;
-        }
+        require(_cat != bytes8(0), "empty cat");
 
         // Keep the cat's position updated to the current epoch.
         if (catsLength_[_cat] != donationEpoch_) {
@@ -109,54 +97,31 @@ contract Donation {
             cats_[_cat][donationEpoch_].position = type(uint128).max;
         }
 
-        wspn_.transferFrom(msg.sender, _amount);
+        wspn_.transferFrom(msg.sender, address(this), _amount);
 
         // Increase the user's tracked amount.
         positions_[msg.sender][donationEpoch_].donated += _amount;
-
-        uint128 donated = positions_[msg.sender][donationEpoch_].donated;
-
-        // If the user's position in the leaderboard is the max uint128, then we
-        // assume they don't exist, and start searching again.
-        uint startCursor = positions_[msg.sender][donationEpoch_].position;
-        if (startCursor == type(uint128).max) startCursor = leaderboardPositions_.length-1;
-        // Start at rightmost of the array, and start to work our way backwards.
-        for (uint i = startCursor; i >= 0; --i) {
-            if (i == 0) {
-                leaderboardPositions_[i] = msg.sender;
-                break; // Looks like we're first. It's time to put us in, then stop.
-            }
-            // Compare the value under the current cursor with the user's accumulated donation.
-            Position storage cursor = positions_[leaderboardPositions_[i]][donationEpoch_];
-            if (donated > cursor.donated) {
-                // If we're larger, swap the current position with the last position. Since we're
-                // progressively moving our way through this array, doing this a lot should be safe,
-                // since we can assume noone will have 0. Hopefully gradually this will eventually
-                // be ordered and will only be expensive the first time.
-                if (i+1 == leaderboardPositions_.length) {
-                    leaderboardPositions_.push(msg.sender); // Pad out the array for the final swap.
-                }
-                address last = leaderboardPositions_[i+1];
-                address current = leaderboardPositions_[i];
-                leaderboardPositions_[i] = last;
-                leaderboardPositions_[i+1] = current;
-            } else {
-                // We're done doing a sort from right to left. Time
-                // to update the user with the current position, and
-                // bail out.
-                cursor.position = uint128(i); // This should be safe given the protections elsewhere.
-            }
-        }
+        cats_[_cat][donationEpoch_].donated += _amount;
 
         // If the cat's position in the leaderboard is max uint128, then we
         // assume they don't exist, and start searching again. We reuse the startCursor here.
-        startCursor = cats_[_cat][donationEpoch_].position;
-        if (startCursor == type(uint128).max) startCursor = leaderboardCats_.length-1;
+        Position storage position = cats_[_cat][donationEpoch_];
+        uint startCursor = position.position;
+        uint128 donated = position.donated;
+
+        if (startCursor == type(uint128).max) {
+            if (leaderboardCats_.length == 0) {
+                leaderboardCats_.push(_cat);
+                return;
+            }
+            else startCursor = leaderboardCats_.length-1;
+        }
+
         // Start at rightmost of the array, and start to work our way backwards.
         for (uint i = startCursor; i >= 0; --i) {
             // Compare the value under the current cursor with the user's accumulated donation.
-            Position storage cursor = cats_[leaderboardCats_[donationEpoch_][i]][donationEpoch_];
-            if (donated > cursor.donated) {
+            Position storage swapping = cats_[leaderboardCats_[i]][donationEpoch_];
+            if (donated > swapping.donated) {
                 // If we're larger, swap the current position with the last position. Since we're
                 // progressively moving our way through this array, doing this a lot should be safe,
                 // since we can assume noone will have 0. Hopefully gradually this will eventually
@@ -168,11 +133,13 @@ contract Donation {
                 bytes8 current = leaderboardCats_[i];
                 leaderboardCats_[i] = last;
                 leaderboardCats_[i+1] = current;
+                if (i == 0) break;
             } else {
                 // We're done doing a sort from right to left. Time
                 // to update the user with the current position, and
                 // bail out.
-                cursor.position = uint128(i);
+                swapping.position = uint128(i);
+                break;
             }
         }
     }
