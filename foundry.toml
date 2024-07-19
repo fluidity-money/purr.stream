@@ -2,3 +2,4 @@
 src = "pkg"
 out = "out"
 libs = ["lib"]
+test = "test"

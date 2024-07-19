@@ -2,36 +2,36 @@
 
 pragma solidity 0.8.16;
 
-interface IDonation is IDonationViewer, IDonationMaker, IDonationAdmin {}
-
 interface IDonationView {
-    struct Donation {
-        address user;
-        uint256 amount;
-    }
-
     /**
-     * @notice leaderboard state that's current.
-     * @param maximum amount to show the user
-     * @return the state
+     * @notice get a cat amount donated.
+     * @param cat to show.
+     * @return the current donation amount for the cat given.
      */
-    function leaderboard(uint length) external return (Donation[] memory);
+    function get(bytes8 cat) external view returns (uint256);
 }
 
 interface IDonationMaker {
     /**
      * @notice makeDonation to the cat given from the amount the user has.
-     * @param cat to donate to, keccak hashed.
+     * @param cat to donate to, keccak hashed. Trimmed.
      * @param amount to donate.
-     * @dev internally updates the leaderboard state.
      */
-    function makeDonation(bytes32 cat, uint256 amount) external;
+    function makeDonation(bytes8 cat, uint256 amount) external;
 }
 
 interface IDonationAdmin {
     /**
-     * @notice takeSnapshot, updating the weekly leaderboard for display
+     * @notice reset the state internally.
      * @dev Operator only.
      */
-    function takeSnapshot() external;
+    function reset() external;
+}
+
+interface IDonation is IDonationView, IDonationMaker, IDonationAdmin {
+    event Donated(
+        bytes8 indexed cat,
+        address indexed donater,
+        uint256 indexed amount
+    );
 }
