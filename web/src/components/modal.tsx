@@ -44,20 +44,18 @@ export default function Modal({
               leaveFrom="opacity-100 transform-[scale(100%)]"
               leaveTo="opacity-0 transform-[scale(95%)]"
             >
-              <DialogPanel className="w-full max-w-3xl overflow-hidden rounded-xl bg-stone-900 shadow-2xl backdrop-blur-xl">
-                <div>
-                  <div className="flex items-end justify-end">
-                    <div onClick={closeModal} className="size-10">
-                      <Image
-                        src={CloseIcon}
-                        width={17}
-                        height={17}
-                        alt="Close Modal"
-                      />
-                    </div>
+              <DialogPanel className="w-full max-w-3xl overflow-hidden rounded-xl border border-neutral-400 bg-stone-950 px-20 py-[60px] shadow-2xl backdrop-blur-xl">
+                <div className="flex items-end justify-end">
+                  <div onClick={closeModal} className="size-10 cursor-pointer">
+                    <Image
+                      src={CloseIcon}
+                      width={17}
+                      height={17}
+                      alt="Close Modal"
+                    />
                   </div>
-                  {children}
                 </div>
+                {children}
               </DialogPanel>
             </TransitionChild>
           </div>
