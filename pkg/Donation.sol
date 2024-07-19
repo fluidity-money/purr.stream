@@ -1,7 +1,11 @@
 // SPDX-Identifier: MIT
 pragma solidity 0.8.16;
 
-import {IDonation} from "./IDonation.sol";
+import {
+    IDonation,
+    IDonationMaker,
+    IDonationAdmin,
+    IDonationView} from "./IDonation.sol";
 
 interface IERC20 {
     function transferFrom(address _sender, address _recipient, uint256 _amount) external;
@@ -46,10 +50,12 @@ contract Donation is IDonation {
         require(version_ == 0, "initialised");
         operator_ = _operator;
         wspn_ = IERC20(_erc20);
+        version_ = 1;
     }
 
     /* OPERATOR FUNCTIONS */
 
+    /// @inheritdoc IDonationAdmin
     function reset() external {
         require(msg.sender == operator_, "only operator");
         donationEpoch_++;
@@ -57,11 +63,14 @@ contract Donation is IDonation {
 
     /* USER FUNCTIONS */
 
+    /// @inheritdoc IDonationView
     function get(bytes8 _cat) external view returns (uint256) {
         return cats_[donationEpoch_][_cat];
     }
 
+    /// @inheritdoc IDonationMaker
     function makeDonation(bytes8 _cat, uint256 _amount) external {
+        require(_amount > MIN_DONATION, "min amount needed");
         wspn_.transferFrom(msg.sender, address(this), _amount);
         positions_[msg.sender] += _amount;
         cats_[donationEpoch_][_cat] += _amount;
