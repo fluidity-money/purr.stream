@@ -4,7 +4,7 @@ import Image from "next/image";
 import Link from "next/link";
 export default function Header() {
   return (
-    <div className="mb-[30px] inline-flex h-[35px] items-center justify-between">
+    <div className="mb-[15px] inline-flex h-[35px] items-center justify-between">
       <Image
         src={Logo}
         alt="purr.stream"

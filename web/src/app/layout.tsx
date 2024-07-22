@@ -42,7 +42,7 @@ export default function RootLayout({
         )}
       >
         <Header />
-        <main>{children}</main>
+        <main className="my-[30px]">{children}</main>
         <Footer />
       </body>
     </html>

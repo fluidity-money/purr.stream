@@ -31,7 +31,7 @@ export default function StreamPlayer() {
   }, [selectedStream.cameraStreamUrl]);
 
   return (
-    <div className="relative h-[360px] w-[640px] bg-[#1E1E1E]">
+    <div className="relative h-[360px] w-[640px] rounded-lg bg-[#1E1E1E]">
       <video
         ref={videoRef}
         data-test="video-player"

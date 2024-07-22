@@ -10,7 +10,7 @@ export default function Footer() {
   const [isDisclaimerOpen, setIsDisclaimerOpen] = useState(false);
 
   return (
-    <div className="inline-flex h-[59px] w-[1260px] items-center justify-between">
+    <div className="mt-[15px] inline-flex h-[59px] w-[1260px] items-center justify-between">
       <div className="flex h-[31px] items-center justify-between gap-4">
         <div
           className="flex cursor-pointer items-center justify-start gap-1 rounded-[23px] py-1.5"
