@@ -1,11 +1,11 @@
-import TabNavigation from "@/components/tabNavigation";
+import Tabs from "@/components/tabs";
 import StreamDetail from "@/components/streams/detail";
 import StreamPlayer from "@/components/streams/player";
 
 export default function Home() {
   return (
     <section data-test="home-page" className="flex flex-row gap-[25px]">
-      <TabNavigation />
+      <Tabs />
       <div className="flex flex-col">
         <StreamPlayer />
         <StreamDetail />
