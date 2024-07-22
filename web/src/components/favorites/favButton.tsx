@@ -1,11 +1,13 @@
-import { useStreamStore } from "@/stores/streamStore";
 import Image from "next/image";
 import FavIcon from "#/images/icons/fav.svg";
+import FavedIcon from "#/images/icons/faved.svg";
+import { useUserStore } from "@/stores/userStore";
 
-export default function FavButton() {
-  const handleFav = () => {
-    // do some
-  };
+export default function FavButton({ hash }: { hash: string }) {
+  const isStreamFaved = useUserStore((s) => s.favs).includes(hash);
+  const favStream = useUserStore((s) => s.favStream);
+  const unfavStream = useUserStore((s) => s.unfavStream);
+  const handleFav = () => (isStreamFaved ? unfavStream(hash) : favStream(hash));
 
   return (
     <div
@@ -14,7 +16,12 @@ export default function FavButton() {
     >
       <div className="relative size-5 origin-top-left">
         <div className="size-5">
-          <Image src={FavIcon} alt="Favorite" width={19} height={17} />
+          <Image
+            src={isStreamFaved ? FavedIcon : FavIcon}
+            alt="Favorite"
+            width={19}
+            height={17}
+          />
         </div>
       </div>
     </div>

@@ -37,15 +37,15 @@ export default function StreamPlayer() {
         data-test="video-player"
         width="640"
         height="360"
-        autoPlay
-        playsInline
-        loop
-        muted
+        // autoPlay
+        // playsInline
+        // loop
+        // muted
         className="rounded-lg"
       />
       <div className="absolute bottom-2 left-2 flex gap-1">
         <CameraSwithButton />
-        <FavButton />
+        <FavButton hash={selectedStream.hash} />
         <CopyUrlButton />
       </div>
     </div>
