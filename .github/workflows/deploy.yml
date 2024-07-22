@@ -13,7 +13,7 @@ jobs:
     runs-on: ubuntu-latest
     environment: mainnet
     env:
-      NEXT_PUBLIC_CONTRACT_ADDRESS: 0xD1213954e3D8654c6e0D7baa5ad7b7460114f9fE
+      NEXT_PUBLIC_CONTRACT_ADDRESS: "0xD1213954e3D8654c6e0D7baa5ad7b7460114f9fE"
     steps:
       - uses: actions/checkout@v3
         with:
