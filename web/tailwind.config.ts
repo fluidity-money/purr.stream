@@ -9,6 +9,7 @@ const config: Config = {
     extend: {
       fontFamily: {
         satoshi: ["var(--font-satoshi)"],
+        inter: ["var(--font-inter)"],
       },
     },
   },

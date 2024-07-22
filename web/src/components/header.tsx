@@ -1,3 +1,4 @@
+/* eslint-disable tailwindcss/no-custom-classname */
 import Logo from "#/images/logo.svg";
 import FaucetIcon from "#/images/icons/faucet.svg";
 import Image from "next/image";
@@ -17,14 +18,14 @@ export default function Header() {
           Donate your Testnet SPN and support different shelters across the
           world.
         </div>
-        <div className="flex items-center justify-start gap-0.5">
+        <Link href={"#"} className="flex items-center justify-start gap-0.5">
           <div className="text-sm font-bold text-neutral-100 underline">
             Learn How
           </div>
-          <div className="h-[9px] w-3.5 origin-top-left -rotate-45 text-sm font-medium text-neutral-100">
+          <div className="font-inter h-[9px] w-3.5 origin-top-left -rotate-45 text-nowrap text-sm font-medium text-neutral-100">
             {"->"}
           </div>
-        </div>
+        </Link>
       </div>
       <div className="flex h-[35px] items-center justify-between gap-2">
         <Link

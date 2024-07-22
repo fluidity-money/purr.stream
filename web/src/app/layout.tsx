@@ -1,10 +1,12 @@
 import type { Metadata } from "next";
+import { Inter } from "next/font/google";
 import localFont from "next/font/local";
 import "./globals.css";
 import Header from "@/components/header";
 import clsx from "clsx";
 import Footer from "@/components/footer";
 
+const inter = Inter({ subsets: ["latin"], variable: "--font-inter" });
 const satoshi = localFont({
   src: [
     {
@@ -38,6 +40,7 @@ export default function RootLayout({
         className={clsx(
           satoshi.className,
           satoshi.variable,
+          inter.variable,
           "bg-stone-900 px-[90px] pb-[50px] pt-[80px] text-white",
         )}
       >
