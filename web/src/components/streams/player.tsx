@@ -41,31 +41,29 @@ export default function StreamPlayer() {
   }, [selectedStream.cameraStreamUrl, isValidBrowser]);
 
   return (
-    <div className="relative h-[360px] w-[640px] rounded-lg bg-[#1E1E1E]">
+    <div className="relative flex aspect-video rounded-lg bg-[#1E1E1E] object-cover">
       {isValidBrowser ? (
         <>
           <video
             ref={videoRef}
             data-test="video-player"
-            width="640"
-            height="360"
             autoPlay
             playsInline
             loop
             muted
-            className="relative z-10 rounded-lg"
+            className="relative z-[2] aspect-video rounded-lg object-cover"
           />
           <p className={clsx("absolute inset-0 z-[1]", placeholderStyle)}>
             Turning on the cat camera...
           </p>
-          <div className="absolute bottom-2 left-2 z-20 flex gap-1">
+          <div className="absolute bottom-2 left-2 z-[3] flex gap-1">
             <CameraSwithButton />
             <FavButton hash={selectedStream.hash} />
             <CopyUrlButton />
           </div>
         </>
       ) : (
-        <p className={clsx("h-full", placeholderStyle)}>
+        <p className={clsx("size-full", placeholderStyle)}>
           This browser is not supported yet. <br /> Please use a different
           browser such as Chrome, Safari, or Opera.
         </p>

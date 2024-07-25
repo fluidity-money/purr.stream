@@ -6,7 +6,7 @@ import Link from "next/link";
 import ConnectButton from "./connectButton";
 export default function Header() {
   return (
-    <div className="mb-[15px] inline-flex h-[35px] items-center justify-between">
+    <div className="mb-[15px] inline-flex h-[35px] w-full max-w-screen-xl items-center justify-between">
       <Image
         src={Logo}
         alt="purr.stream"
@@ -15,7 +15,7 @@ export default function Header() {
         height={29}
         data-test="purr-stream-logo"
       />
-      <div className="flex h-[19px] shrink grow basis-0 items-center justify-center gap-1.5 px-[100px]">
+      <div className="flex h-[19px] shrink grow basis-0 items-center justify-center gap-1.5">
         <div className="w-[459px] text-sm font-medium text-neutral-500">
           Donate your Testnet SPN and support different shelters across the
           world.

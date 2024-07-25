@@ -12,9 +12,9 @@ export default function StreamDetail() {
 
   return (
     <div className="mt-[30px] flex flex-col gap-[30px]">
-      <div className="inline-flex h-[70px] w-[810px] items-start justify-between pl-5">
+      <div className="inline-flex h-[70px] items-start justify-between pl-5">
         <div className="inline-flex shrink grow basis-0 flex-col items-start justify-center gap-[5px]">
-          <div className="inline-flex w-[334px] flex-col items-center justify-start gap-2.5">
+          <div className="inline-flex flex-col items-center justify-start gap-2.5">
             <div className="shrink grow basis-0 text-nowrap text-[25px] font-bold text-white">
               {selectedStream.name} - ({selectedStream.altName})
             </div>
@@ -35,7 +35,7 @@ export default function StreamDetail() {
                   </div>
                 </div>
               </Link>
-              <div className="flex h-[19px] w-[170px] items-center justify-start gap-2 rounded-[23px]">
+              <div className="flex h-[19px] items-center justify-start gap-2 rounded-[23px]">
                 <div className="text-sm font-medium text-neutral-400">
                   Local Time:
                 </div>
@@ -46,7 +46,7 @@ export default function StreamDetail() {
             </div>
           </div>
         </div>
-        <div className="flex h-[69px] w-[360px] items-center justify-center gap-[19px]">
+        <div className="flex h-[69px] items-center justify-center gap-[19px]">
           <div className="inline-flex h-[69px] shrink grow basis-0 flex-col items-center justify-center gap-1 rounded-lg bg-neutral-100 px-5 py-[25px]">
             <div className="text-xl font-bold text-stone-950">❤️ Donate!</div>
           </div>

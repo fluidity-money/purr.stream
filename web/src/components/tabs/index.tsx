@@ -13,16 +13,12 @@ export default function TabNavigation() {
   const [tabIndex, setTabIndex] = useState(0);
 
   return (
-    <div className="flex flex-col">
+    <>
       {tabIndex === 2 ? null : <Search />}
       <TabGroup onChange={setTabIndex}>
-        <TabList
-          className={"my-[25px] inline-flex items-start justify-start gap-2"}
-        >
+        <TabList className={"my-[25px] flex w-full gap-2"}>
           <TabButton title="All Streams" emoji="😺" />
-
           <TabButton title="Your Favorites" emoji="❤️" />
-
           <TabButton title="See Leaderboard" emoji="🏆" />
         </TabList>
         <TabPanels>
@@ -39,6 +35,6 @@ export default function TabNavigation() {
           </TabPanel>
         </TabPanels>
       </TabGroup>
-    </div>
+    </>
   );
 }

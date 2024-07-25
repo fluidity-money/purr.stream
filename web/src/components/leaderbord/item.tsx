@@ -14,7 +14,7 @@ export default function LeaderItem({
   return (
     <li
       onClick={handleSelect}
-      className="inline-flex h-[91px] w-[570px] items-center justify-between border-b border-neutral-700 pb-5 pl-[15px] pr-2 pt-[15px]"
+      className="inline-flex h-[91px] items-center justify-between border-b border-neutral-700 pb-5 pl-[15px] pr-2 pt-[15px]"
     >
       <div className="text-sm font-bold text-neutral-100">1.</div>
       <div className="flex h-14 shrink grow basis-0 items-center justify-start gap-3 px-[15px]">

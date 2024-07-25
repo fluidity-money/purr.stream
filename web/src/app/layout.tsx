@@ -55,13 +55,15 @@ export default function RootLayout({
           satoshi.className,
           satoshi.variable,
           inter.variable,
-          "bg-stone-900 px-[90px] pb-[50px] pt-[80px] text-white",
+          "flex min-h-screen flex-col items-center justify-between bg-stone-900 px-[90px] pb-[50px] pt-[80px] text-white",
         )}
       >
-        <Providers>
-          <Header />
-          <main className="my-[30px]">{children}</main>
-        </Providers>
+        <div>
+          <Providers>
+            <Header />
+            <main className="my-[15px] w-full max-w-7xl">{children}</main>
+          </Providers>
+        </div>
         <Footer />
       </body>
     </html>

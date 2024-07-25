@@ -12,18 +12,19 @@ export default function StreamItem({
   const selectedStream = useStreamStore((state) => state.selectedStream);
   const handleSelect = () => selectStream(data.hash);
   const isSelected = selectedStream.hash === data.hash;
+
   return (
     <li
       onClick={handleSelect}
       className={clsx(
-        "group relative inline-flex h-[51px] w-[425px] cursor-pointer items-center justify-between rounded-lg pb-[15px] pl-[15px] pr-2 pt-2.5 hover:bg-[#1D1D1D]",
+        "group relative flex h-[51px] w-full cursor-pointer items-center justify-between rounded-lg pb-[15px] pl-[15px] pr-2 pt-2.5 hover:bg-[#1D1D1D]",
         isSelected && "bg-[#1D1D1D]",
       )}
     >
       <div className="text-sm font-bold text-neutral-100">
         {data.name} - {data.altName}
       </div>
-      <div className="inline-flex items-end justify-start gap-[5px] rounded-[23px] border border-neutral-700 px-[9px] py-[5px]">
+      <div className="flex items-end justify-start gap-[5px] rounded-[23px] border border-neutral-700 px-[9px] py-[5px]">
         <div className="text-base font-medium text-neutral-400">
           {country2Flag(data.countryCode)}
         </div>
