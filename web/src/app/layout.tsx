@@ -26,7 +26,20 @@ const satoshi = localFont({
 
 export const metadata: Metadata = {
   title: "Purr.Stream",
-  description: "Donate to your faviroute cat",
+  description: "Donate onchain and support animal welfare",
+  metadataBase: new URL("https://purr.stream"),
+  keywords: [
+    "cat",
+    "donate",
+    "stream",
+    "purr",
+    "purr.stream",
+    "onchain",
+    "animal",
+    "welfare",
+    "superposition",
+    "blockchain",
+  ],
 };
 
 export default function RootLayout({
