@@ -1,6 +1,7 @@
 import { thirdwebClient } from "@/providers/thirdwebClient";
 import { ConnectButton as ThirdWebButton } from "thirdweb/react";
 import { metadata } from "@/app/layout";
+import { config } from "@/config";
 
 export default function ConnectButton() {
   //   return (
@@ -12,6 +13,7 @@ export default function ConnectButton() {
   return (
     <ThirdWebButton
       client={thirdwebClient}
+      chain={config.chains.superposition.testnet}
       appMetadata={{
         name: metadata.title as string,
         url: metadata.metadataBase?.href,
