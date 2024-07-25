@@ -10,6 +10,7 @@ export default function Header() {
         src={Logo}
         alt="purr.stream"
         width={167}
+        priority={true}
         height={29}
         data-test="purr-stream-logo"
       />
@@ -22,7 +23,7 @@ export default function Header() {
           <div className="text-sm font-bold text-neutral-100 underline">
             Learn How
           </div>
-          <div className="font-inter h-[9px] w-3.5 origin-top-left -rotate-45 text-nowrap text-sm font-medium text-neutral-100">
+          <div className="h-[9px] w-3.5 origin-top-left -rotate-45 text-nowrap font-inter text-sm font-medium text-neutral-100">
             {"->"}
           </div>
         </Link>

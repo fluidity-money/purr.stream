@@ -1,6 +1,9 @@
 import Tabs from "@/components/tabs";
 import StreamDetail from "@/components/streams/detail";
-import StreamPlayer from "@/components/streams/player";
+import dynamic from "next/dynamic";
+const StreamPlayer = dynamic(() => import("@/components/streams/player"), {
+  ssr: false,
+});
 
 export default function Home() {
   return (
