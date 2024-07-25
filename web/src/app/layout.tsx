@@ -5,6 +5,7 @@ import "./globals.css";
 import Header from "@/components/header";
 import clsx from "clsx";
 import Footer from "@/components/footer";
+import Providers from "@/providers";
 
 const inter = Inter({ subsets: ["latin"], variable: "--font-inter" });
 const satoshi = localFont({
@@ -57,8 +58,10 @@ export default function RootLayout({
           "bg-stone-900 px-[90px] pb-[50px] pt-[80px] text-white",
         )}
       >
-        <Header />
-        <main className="my-[30px]">{children}</main>
+        <Providers>
+          <Header />
+          <main className="my-[30px]">{children}</main>
+        </Providers>
         <Footer />
       </body>
     </html>

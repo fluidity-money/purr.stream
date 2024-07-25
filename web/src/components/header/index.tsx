@@ -3,6 +3,7 @@ import Logo from "#/images/logo.svg";
 import FaucetIcon from "#/images/icons/faucet.svg";
 import Image from "next/image";
 import Link from "next/link";
+import ConnectButton from "./connectButton";
 export default function Header() {
   return (
     <div className="mb-[15px] inline-flex h-[35px] items-center justify-between">
@@ -36,9 +37,7 @@ export default function Header() {
           <Image src={FaucetIcon} className="size-[3.5]" alt="Go to faucet" />
           <div className="text-sm font-bold text-stone-950">Faucet</div>
         </Link>
-        <div className="flex items-center justify-start gap-2 rounded-lg bg-neutral-100 px-[15px] py-2">
-          <div className="text-sm font-bold text-stone-950">Connect Wallet</div>
-        </div>
+        <ConnectButton />
       </div>
     </div>
   );
