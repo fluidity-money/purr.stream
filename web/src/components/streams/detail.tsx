@@ -12,28 +12,25 @@ export default function StreamDetail() {
 
   return (
     <div className="mt-[30px] flex flex-col gap-[30px]">
-      <div className="inline-flex h-[70px] items-start justify-between pl-5">
-        <div className="inline-flex shrink grow basis-0 flex-col items-start justify-center gap-[5px]">
-          <div className="inline-flex flex-col items-center justify-start gap-2.5">
-            <div className="shrink grow basis-0 text-nowrap text-[25px] font-bold text-white">
+      <div className="flex items-start justify-between pl-5">
+        <div className="shrink grow basis-0 flex-col items-start justify-center gap-[5px]">
+          <div className="flex flex-col gap-2.5">
+            <div className="text-nowrap text-left text-[25px] font-bold text-white">
               {selectedStream.name} - ({selectedStream.altName})
             </div>
             <div className="flex items-center justify-start gap-6">
               <Link href={selectedStream.charityUrl} target="_blank">
-                <div className="flex items-center justify-start gap-2 text-nowrap rounded-[23px] border border-neutral-400 px-3 py-[5px]">
-                  <div className="text-base font-medium text-neutral-400">
+                <p className="flex items-center justify-start gap-2 text-nowrap rounded-[23px] border border-neutral-400 px-3 py-[5px]">
+                  <span className="text-base font-medium text-neutral-400">
                     🇯🇵
-                  </div>
-                  <div>
-                    <span className="text-xs font-bold text-neutral-100">
-                      {country2Name(selectedStream.countryCode as CountryCode)}
-                    </span>
-                    <span className="text-xs font-bold text-neutral-400">
-                      {" "}
-                      - {selectedStream.charity}
-                    </span>
-                  </div>
-                </div>
+                  </span>
+                  <span className="text-xs font-bold text-neutral-100">
+                    {country2Name(selectedStream.countryCode as CountryCode)}
+                  </span>{" "}
+                  <span className="text-xs font-bold text-neutral-400">
+                    - {selectedStream.charity}
+                  </span>
+                </p>
               </Link>
               <div className="flex h-[19px] items-center justify-start gap-2 rounded-[23px]">
                 <div className="text-sm font-medium text-neutral-400">
@@ -51,7 +48,7 @@ export default function StreamDetail() {
             <div className="text-xl font-bold text-stone-950">❤️ Donate!</div>
           </div>
           <div className="inline-flex shrink grow basis-0 flex-col items-center justify-center gap-1 self-stretch rounded-lg border border-neutral-100 px-5 py-[25px]">
-            <div className="text-base font-bold text-neutral-100">
+            <div className="text-nowrap text-base font-bold text-neutral-100">
               See Leaderboard
             </div>
           </div>
