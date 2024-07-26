@@ -85,4 +85,15 @@ contract Donation is IDonation {
         require(msg.sender == operator_, "only operator");
         donationEpoch_++;
     }
+
+    /**
+     * @notice updateOperator, with some controls for consistency with forking.
+     * @param _old operator to use.
+     * @param _new operator to replace it with.
+     */
+    function updateOperator(address _old, address _new) external {
+        require(msg.sender == operator_, "only operator");
+        require(operator_ == _old, "inconsistent");
+        operator_ = _new;
+    }
 }
