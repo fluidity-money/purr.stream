@@ -20,6 +20,10 @@ export default function ConnectButton() {
         description: metadata.description!,
         logoUrl: metadata.metadataBase + "/images/logo.svg",
       }}
+      accountAbstraction={{
+        chain: config.chains.superposition.testnet,
+        sponsorGas: true,
+      }}
     />
   );
 }
