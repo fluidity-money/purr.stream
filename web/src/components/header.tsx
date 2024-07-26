@@ -3,7 +3,7 @@ import Logo from "#/images/logo.svg";
 import FaucetIcon from "#/images/icons/faucet.svg";
 import Image from "next/image";
 import Link from "next/link";
-import ConnectButton from "./connectButton";
+import ConnectButton from "@/components/buttons/connectButton";
 export default function Header() {
   return (
     <div className="mb-[15px] inline-flex h-[35px] w-full max-w-screen-xl items-center justify-between">
