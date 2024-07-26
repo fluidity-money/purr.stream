@@ -26,14 +26,9 @@ export default function StreamItem({
           {data.name} - {data.altName}
         </div>
       </div>
-      <div className="inline-flex items-end justify-start gap-[5px] rounded-[23px] border border-neutral-700 px-[9px] py-[5px]">
-        <div className="text-base font-medium text-neutral-400">
-          {country2Flag(data.countryCode)}
-        </div>
-        <div className="text-xs font-bold uppercase text-neutral-400">
-          {data.countryCode}
-        </div>
-      </div>
+      <span className="rounded-[23px] border border-neutral-700 px-[9px] py-[5px] text-xs font-bold uppercase text-neutral-400">
+        {country2Flag(data.countryCode)} {data.countryCode}
+      </span>
       {!isSelected && (
         <div className="absolute inset-x-0 bottom-0 h-px w-full bg-[#404040] group-hover:hidden" />
       )}
