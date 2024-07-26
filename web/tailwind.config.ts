@@ -11,6 +11,10 @@ const config: Config = {
         satoshi: ["var(--font-satoshi)"],
         inter: ["var(--font-inter)"],
       },
+      colors: {
+        tint: "#6E5BDD",
+        tintLight: "#A2A2F2",
+      },
     },
   },
   plugins: [require("@headlessui/tailwindcss")],
