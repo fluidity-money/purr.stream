@@ -3,13 +3,18 @@
 import { useStreamStore } from "@/stores/streamStore";
 import { useEffect, useRef } from "react";
 import Hls from "hls.js";
-import CameraSwithButton from "./cameraSwitchButton";
-import FavButton from "../favorites/favButton";
+import CameraSwithButton from "@/components/buttons/cameraSwitchButton";
+import FavButton from "@/components/buttons/favButton";
 import Bowser from "bowser";
 import clsx from "clsx";
 import dynamic from "next/dynamic";
 
-const CopyUrlButton = dynamic(() => import("./copyUrlButton"), { ssr: false });
+const CopyUrlButton = dynamic(
+  () => import("@/components/buttons/copyUrlButton"),
+  {
+    ssr: false,
+  },
+);
 export default function StreamPlayer() {
   const selectedStream = useStreamStore((state) => state.selectedStream);
   const videoRef = useRef<HTMLVideoElement>(null);

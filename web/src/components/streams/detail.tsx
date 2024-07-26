@@ -5,13 +5,14 @@ import { country2Name, CountryCode } from "../../utils/country2";
 import Link from "next/link";
 import Image from "next/image";
 import SPNIcon from "#/images/icons/spn.svg";
+import DonateButton from "@/components/buttons/donateButton";
+import LeaderboardButton from "@/components/buttons/leaderboardButton";
 
 export default function StreamDetail() {
   const selectedStream = useStreamStore((state) => state.selectedStream);
-  // return <div data-test="stream-info">{selectedStream.name}</div>;
 
   return (
-    <div className="mt-[30px] flex flex-col gap-[30px]">
+    <div className="mt-[30px] flex flex-col gap-[30px]" data-test="stream-info">
       <div className="flex items-start justify-between pl-5">
         <div className="shrink grow basis-0 flex-col items-start justify-center gap-[5px]">
           <div className="flex flex-col gap-2.5">
@@ -44,14 +45,8 @@ export default function StreamDetail() {
           </div>
         </div>
         <div className="flex h-[69px] items-center justify-center gap-[19px]">
-          <div className="inline-flex h-[69px] shrink grow basis-0 flex-col items-center justify-center gap-1 rounded-lg bg-neutral-100 px-5 py-[25px]">
-            <div className="text-xl font-bold text-stone-950">❤️ Donate!</div>
-          </div>
-          <div className="inline-flex shrink grow basis-0 flex-col items-center justify-center gap-1 self-stretch rounded-lg border border-neutral-100 px-5 py-[25px]">
-            <div className="text-nowrap text-base font-bold text-neutral-100">
-              See Leaderboard
-            </div>
-          </div>
+          <DonateButton />
+          <LeaderboardButton />
         </div>
       </div>
       <div className="inline-flex h-[102px] w-[810px] items-center justify-between pl-5">
