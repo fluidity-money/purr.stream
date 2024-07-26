@@ -7,10 +7,6 @@ import {
     IDonationAdmin,
     IDonationView} from "./IDonation.sol";
 
-interface IERC20 {
-    function transferFrom(address _sender, address _recipient, uint256 _amount) external;
-}
-
 contract Donation is IDonation {
     uint256 constant private MIN_DONATION = 0;
 
@@ -22,9 +18,9 @@ contract Donation is IDonation {
     address private operator_;
 
     /**
-     * @notice wspn to take from the user for transferring.
+     * @notice __unused
      */
-    IERC20 private wspn_;
+    address private __unused;
 
     /**
      * @notice donationEpoch_ that we're currently up to. Used to know
@@ -44,36 +40,49 @@ contract Donation is IDonation {
      */
     mapping (uint => mapping(bytes8 => uint256)) private cats_;
 
+    /**
+     * @notice catWallets_ count of the number that donated to the cat.
+     */
+    mapping (uint => mapping(bytes8 => uint256)) private catWallets_;
+
     /* SETUP FUNCTIONS */
 
-    function init(address _operator, address _erc20) external {
+    function init(address _operator) external {
         require(version_ == 0, "initialised");
         operator_ = _operator;
-        wspn_ = IERC20(_erc20);
         version_ = 1;
     }
 
-    /* OPERATOR FUNCTIONS */
-
-    /// @inheritdoc IDonationAdmin
-    function reset() external {
-        require(msg.sender == operator_, "only operator");
-        donationEpoch_++;
-    }
-
-    /* USER FUNCTIONS */
+    /* DONATION VIEWER */
 
     /// @inheritdoc IDonationView
     function get(bytes8 _cat) external view returns (uint256) {
         return cats_[donationEpoch_][_cat];
     }
 
+    /// @inheritdoc IDonationView
+    function walletCount(bytes8 _cat) external view returns (uint256) {
+        return catWallets_[donationEpoch_][_cat];
+    }
+
+    /* DONATION MAKER */
+
     /// @inheritdoc IDonationMaker
-    function makeDonation(bytes8 _cat, uint256 _amount) external {
-        require(_amount > MIN_DONATION, "min amount needed");
-        wspn_.transferFrom(msg.sender, address(this), _amount);
-        positions_[msg.sender] += _amount;
-        cats_[donationEpoch_][_cat] += _amount;
-        emit Donated(_cat, msg.sender, _amount);
+    function makeDonation(bytes8 _cat) external payable {
+        require(msg.value > MIN_DONATION, "min amount needed");
+        if (positions_[msg.sender] == 0) {
+            catWallets_[donationEpoch_][_cat]++;
+        }
+        positions_[msg.sender] += msg.value;
+        cats_[donationEpoch_][_cat] += msg.value;
+        emit Donated(_cat, msg.sender, msg.value);
+    }
+
+    /* ADMIN  FUNCTIONS */
+
+    /// @inheritdoc IDonationAdmin
+    function reset() external {
+        require(msg.sender == operator_, "only operator");
+        donationEpoch_++;
     }
 }
