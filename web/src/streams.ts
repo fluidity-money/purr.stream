@@ -11,7 +11,7 @@ export const streams = [
     countryCode: "au",
     charity: "RSPCA Australia",
     charityUrl: "https://www.rspca.org.au/donate",
-    hash: "809db432bdc4fb944cfc35131fe8647f7580f98f3c64c3e90e51c7bea475c47c",
+    hash: "809db432bdc4fb94",
   },
   {
     name: "Lucky 7-Eleven II",
@@ -25,7 +25,7 @@ export const streams = [
     countryCode: "cn",
     charity: "RSPCA Australia",
     charityUrl: "https://www.rspca.org.au/donate",
-    hash: "e4380a256463605037d98f7d162825f6e033677ab79c81ef7ef5bd123c2270bb",
+    hash: "e4380a2564636050",
   },
   {
     name: "Auspicious Restaurant",
@@ -39,7 +39,7 @@ export const streams = [
     countryCode: "jp",
     charity: "RSPCA Australia",
     charityUrl: "https://www.rspca.org.au/donate",
-    hash: "add86ad06d4dbcd1b50e1b2220064dc438bf18a4f88ff3d8f70b491ca2689e54",
+    hash: "add86ad06d4dbcd1",
   },
   {
     name: "Mr. Fall",
@@ -53,7 +53,7 @@ export const streams = [
     countryCode: "cn",
     charity: "RSPCA Australia",
     charityUrl: "https://www.rspca.org.au/donate",
-    hash: "04b10a1fdc7a10ba730bef5e8d2b222ebe73ba5717b3e3c1811dbbb029121011",
+    hash: "04b10a1fdc7a10ba",
   },
 ] as const;
 

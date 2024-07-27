@@ -1,12 +1,21 @@
-import { streams } from "@/streams";
-import LeaderItem from "./item";
+import LeaderItem, { LeaderItemType } from "./item";
+import { useQuery } from "@tanstack/react-query";
 
 export default function LeaderList() {
+  const {
+    data: leaders,
+    isLoading,
+    isError,
+  } = useQuery<LeaderItemType[]>({
+    queryKey: ["leaderboard"],
+  });
+
+  if (isLoading) return <div>Loading...</div>;
+  if (isError) return <div>Something went wrong</div>;
+
   return (
     <ul>
-      {streams.map((stream) => (
-        <LeaderItem data={stream} key={stream.hash} />
-      ))}
+      {leaders?.map((stream) => <LeaderItem data={stream} key={stream.hash} />)}
     </ul>
   );
 }

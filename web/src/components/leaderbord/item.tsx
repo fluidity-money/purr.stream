@@ -1,13 +1,10 @@
 "use client";
 import { useStreamStore } from "@/stores/streamStore";
 import { streams } from "@/streams";
+import { country2Flag } from "@/utils/country2";
 import Image from "next/image";
-
-export default function LeaderItem({
-  data,
-}: {
-  data: (typeof streams)[number];
-}) {
+export type LeaderItemType = (typeof streams)[number] & { score: number };
+export default function LeaderItem({ data }: { data: LeaderItemType }) {
   const selectStream = useStreamStore((state) => state.selectStream);
   const handleSelect = () => selectStream(data.hash);
 
@@ -27,20 +24,19 @@ export default function LeaderItem({
         />
         <div className="inline-flex flex-col items-start justify-center gap-2">
           <div className="text-base font-bold text-neutral-100">
-            Mr Ivan - Extra Fab
+            {data.name} {data.altName}
           </div>
-          <div className="inline-flex items-end justify-start gap-[5px] rounded-[23px] border border-neutral-700 px-[9px] py-[5px]">
-            <div className="text-base font-medium text-neutral-400">🏳️‍🌈</div>
-            <div className="text-xs font-bold text-neutral-400">
-              LGBT - GHEI
-            </div>
-          </div>
+          <span className="rounded-[23px] border border-neutral-700 px-[9px] py-[5px] text-xs font-bold uppercase text-neutral-400">
+            {country2Flag(data.countryCode)} {data.countryCode}
+          </span>
         </div>
       </div>
       <div className="flex h-10 items-center justify-between gap-6">
         <div className="inline-flex flex-col items-start justify-center gap-0.5">
           <div className="text-xs font-medium text-neutral-400">$SPN</div>
-          <div className="text-base font-bold text-neutral-100">500</div>
+          <div className="text-base font-bold text-neutral-100">
+            {data.score}
+          </div>
         </div>
         <div className="inline-flex flex-col items-start justify-center gap-0.5">
           <div className="text-xs font-medium text-neutral-400">Total Tx</div>
