@@ -33,24 +33,16 @@ export default function Disclaimer() {
           </div>
           <div className="flex h-[102px] flex-col items-start justify-start gap-2 self-stretch">
             <div className="self-stretch text-base font-bold text-neutral-100">
-              What’s HelloStreetCat?
             </div>
             <div className="self-stretch text-xs font-medium leading-[18px] text-zinc-400">
-              The hello street cat app provides a platform for many cat feeders
-              around china which can have food dispensed to them through the
-              app. the cameras you see are only active if a viewer is watching
-              on the app.
             </div>
           </div>
           <div className="flex h-[102px] flex-col items-start justify-start gap-2 self-stretch">
             <div className="self-stretch text-base font-bold text-neutral-100">
-              Where can i contact you?
+              Where can I contact you?
             </div>
             <div className="self-stretch text-xs font-medium leading-[18px] text-zinc-400">
-              For issue reporting, feature suggestions, or anything in between,
-              you can use the #meow-camera channel in the DeMiaowa discord
-              server. for all other questions (including legal) you can talk to
-              us on meow@imput.net
+              For issue reporting, feature suggestions, contact Superposition Discord!
             </div>
           </div>
         </div>
