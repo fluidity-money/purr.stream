@@ -2,6 +2,8 @@ import { config } from "@/config";
 import { createThirdwebClient } from "thirdweb";
 import { getContract } from "thirdweb";
 
+//
+
 const clientId = process.env.NEXT_PUBLIC_THIRDWEB_ID;
 const net = process.env.NEXT_PUBLIC_NET as "mainnet" | "testnet" | undefined;
 
