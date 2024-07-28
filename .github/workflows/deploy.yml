@@ -15,6 +15,7 @@ jobs:
     env:
       NEXT_PUBLIC_CONTRACT_ADDRESS: "0xD1213954e3D8654c6e0D7baa5ad7b7460114f9fE"
       NEXT_PUBLIC_THIRDWEB_ID: "cfa42af13f67ff444d39445c50c60ef1"
+      NEXT_PUBLIC_NET: testnet
     steps:
       - uses: actions/checkout@v3
         with:
