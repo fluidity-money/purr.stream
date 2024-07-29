@@ -66,8 +66,7 @@ export const streams = [
     behind:
       "https://streetcatpull.hellobike.com/live/4412424173050749216_2.m3u8",
     countryCode: "us",
-    charity:
-      "ASPCA (American Society for the Prevention of Cruelty to Animals)",
+    charity: "ASPCA",
     charityDescription:
       "The American Society for the Prevention of Cruelty to Animals is a non-profit organization dedicated to preventing animal cruelty.",
     charityUrl: "https://www.aspca.org/ways-to-give",
