@@ -5,7 +5,9 @@ export default function Stats() {
   const { data: leaders } = useQuery<LeaderItemType[]>({
     queryKey: ["leaderboard"],
   });
-  const totalDonation = leaders?.reduce((acc, curr) => acc + curr.score, 0);
+  const totalDonation = leaders
+    ?.reduce((acc, curr) => acc + curr.score, 0)
+    .toFixed(3);
 
   return (
     <div className="inline-flex h-[92px] items-center justify-center gap-[70px] rounded-t-lg border-b border-neutral-400 pb-[25px] pl-[30px] pr-[25px] pt-[19px]">
