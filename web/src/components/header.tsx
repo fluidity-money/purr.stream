@@ -31,7 +31,8 @@ export default function Header() {
       </div>
       <div className="flex h-[35px] items-center justify-between gap-2">
         <Link
-          href={"#"}
+          target="_blank"
+          href="https://faucet.superposition.so"
           className="flex items-center justify-start gap-[5px] rounded-lg bg-neutral-100 px-[15px] py-2"
         >
           <Image src={FaucetIcon} className="size-[3.5]" alt="Go to faucet" />
