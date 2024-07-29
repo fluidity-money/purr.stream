@@ -15,7 +15,7 @@ export default function TabNavigation() {
   return (
     <>
       {curTabIdx === 2 ? null : <Search />}
-      <TabGroup onChange={changeTab}>
+      <TabGroup selectedIndex={curTabIdx} onChange={changeTab}>
         <TabList className={"my-[25px] flex w-full gap-2"}>
           <TabButton title="All Streams" emoji="😺" />
           <TabButton title="Your Favorites" emoji="❤️" />

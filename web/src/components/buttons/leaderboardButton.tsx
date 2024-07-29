@@ -8,7 +8,7 @@ export default function LeaderboardButton() {
   return (
     <div
       onClick={openLeaderboard}
-      className="inline-flex shrink grow basis-0 flex-col items-center justify-center gap-1 self-stretch rounded-lg border border-neutral-100 px-5 py-[25px]"
+      className="inline-flex shrink grow basis-0 cursor-pointer flex-col items-center justify-center gap-1 self-stretch rounded-lg border border-neutral-100 px-5 py-[25px]"
     >
       <div className="text-nowrap text-base font-bold text-neutral-100">
         See Leaderboard
