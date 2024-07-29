@@ -22,7 +22,7 @@ export default function LeaderItem({
       <div className="text-sm font-bold text-neutral-100">{rank}.</div>
       <div className="flex h-14 shrink grow basis-0 items-center justify-start gap-3 px-[15px]">
         <Image
-          className="size-14 rounded-lg"
+          className="size-14 rounded-lg object-cover"
           src={data.image}
           width={56}
           height={56}
