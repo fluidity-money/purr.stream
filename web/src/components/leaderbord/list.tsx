@@ -15,7 +15,9 @@ export default function LeaderList() {
 
   return (
     <ul>
-      {leaders?.map((stream) => <LeaderItem data={stream} key={stream.hash} />)}
+      {leaders?.map((stream, idx) => (
+        <LeaderItem rank={idx + 1} data={stream} key={stream.hash} />
+      ))}
     </ul>
   );
 }

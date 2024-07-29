@@ -7,10 +7,19 @@ import Image from "next/image";
 import SPNIcon from "#/images/icons/spn.svg";
 import DonateButton from "@/components/buttons/donateButton";
 import LeaderboardButton from "@/components/buttons/leaderboardButton";
+import { useQuery } from "@tanstack/react-query";
+import { LeaderItemType } from "../leaderbord/item";
 
 export default function StreamDetail() {
   const selectedStream = useStreamStore((state) => state.selectedStream);
-
+  const { data: leaders } = useQuery<LeaderItemType[]>({
+    queryKey: ["leaderboard"],
+  });
+  const donation =
+    leaders?.filter((cat) => cat.hash === selectedStream.hash)?.[0].score ?? 0;
+  const catIndex =
+    leaders?.findIndex((cat) => selectedStream.hash === cat.hash) ?? -1;
+  const rank = catIndex === -1 ? "N/A" : catIndex + 1;
   return (
     <div className="mt-[30px] flex flex-col gap-[30px]" data-test="stream-info">
       <div className="flex items-start justify-between pl-5">
@@ -66,7 +75,9 @@ export default function StreamDetail() {
               <div className="relative h-5 w-[21px] rounded-[41px]">
                 <Image src={SPNIcon} width={21} height={21} alt="SPN" />
               </div>
-              <div className="text-xl font-medium text-neutral-100">500</div>
+              <div className="text-xl font-medium text-neutral-100">
+                {donation}
+              </div>
             </div>
           </div>
           <div className="inline-flex flex-col items-start justify-center gap-[5px] rounded-[9px] py-3">
@@ -78,7 +89,7 @@ export default function StreamDetail() {
                 💹
               </div>
               <div className="text-right text-xl font-medium text-neutral-100">
-                192,401+
+                N/A
               </div>
             </div>
           </div>
@@ -89,7 +100,7 @@ export default function StreamDetail() {
                 🏆
               </div>
               <div className="text-right text-xl font-medium text-neutral-100">
-                2
+                {rank}
               </div>
             </div>
           </div>
