@@ -37,7 +37,7 @@ export const streams = [
       "RSPCA Australia (The Royal Society for the Prevention of Cruelty to Animals) is an Australian peak organisation established in 1981 to promote animal welfare.",
     charityUrl: "https://www.rspca.org.au/support-us/donate/",
     image: Cat2,
-    hash: "365068e91fadfb68",
+    hash: "025a7ddb5c9f7b05",
   },
   {
     name: "Lucky 7-Eleven II",
@@ -54,7 +54,7 @@ export const streams = [
       "Japan Animal Welfare Society operates as a non-profit organization. The Organization provides funds, advice, and support to abandoned, neglected and abused pets, captive animals, and wildlife.",
     charityUrl: "https://www.jaws.or.jp/donation/",
     image: Cat3,
-    hash: "1e64d43e8dbeca62",
+    hash: "08df2774f91d4ba6",
   },
   {
     name: "Auspicious Restaurant",
@@ -71,7 +71,7 @@ export const streams = [
       "The American Society for the Prevention of Cruelty to Animals is a non-profit organization dedicated to preventing animal cruelty.",
     charityUrl: "https://www.aspca.org/ways-to-give",
     image: Cat4,
-    hash: "a81f1d73b1206439",
+    hash: "6a5e2b4f15ce42d7",
   },
   {
     name: "Happy Cat House No.2",
@@ -88,7 +88,7 @@ export const streams = [
       "Ampara Animal works to rescue and rehabilitate abandoned animals, promoting adoption and responsible care.",
     charityUrl: "https://institutoamparanimal.org.br/",
     image: Cat5,
-    hash: "d4b7de530408fa2b",
+    hash: "4600c5499038c028",
   },
   {
     name: "Ten Thousand Kitties House (Ms. Dress)",
@@ -106,7 +106,7 @@ export const streams = [
     charityUrl:
       "https://www.jakartaanimalaid.com/2016/06/27/donate-now-through-credit-card/",
     image: Cat6,
-    hash: "ba5b556008225366",
+    hash: "2070af33a3eca4cf",
   },
   {
     name: "CatMojo (Mr. Fresh)",
@@ -123,7 +123,7 @@ export const streams = [
       "ACT Asia promotes humane education and works on animal welfare issues, focusing on the humane treatment of animals.",
     charityUrl: "https://www.actasia.org/",
     image: Cat7,
-    hash: "52991afe2104eb1c",
+    hash: "573e60f0e8f21183",
   },
   {
     name: "Happy Meow Island ⌯'ㅅ'⌯ (Ms. Smore)",
@@ -140,7 +140,7 @@ export const streams = [
       "Turkish Animal Rights Federation (THKD) advocates for animal rights and works to prevent animal cruelty.",
     charityUrl: "https://www.thkd.org.tr/en/bagis",
     image: Cat8,
-    hash: "74d2c59c64e79deb",
+    hash: "912a427a08737a20",
   },
   {
     name: "(Duck Feeder) Mr. Sweetpea",
@@ -157,7 +157,7 @@ export const streams = [
       "30 Millions d’Amis is dedicated to animal protection and welfare, supporting rescue operations and adoptions.",
     charityUrl: "https://www.30millionsdamis.fr/je-donne/",
     image: Cat9,
-    hash: "0fd8a8b6538c20a4",
+    hash: "a1ede219d0770a7c",
   },
   {
     name: "Mr. Long",
@@ -174,7 +174,7 @@ export const streams = [
       "RSPCA UK is a charity focused on preventing animal cruelty and promoting animal welfare through various programs.",
     charityUrl: "https://www.rspca.org.uk/getinvolved/donate",
     image: Cat10,
-    hash: "a1b9c955e1cc331f",
+    hash: "9f6e16871f1ccf20",
   },
   {
     name: "House of Compassion by the Strait (Mr. Shock)",
@@ -191,7 +191,7 @@ export const streams = [
       "Dutch Society for the Protection of Animals Dierenbescherming works to protect animals, improve their welfare, and prevent cruelty through advocacy and education.",
     charityUrl: "https://www.dierenbescherming.nl",
     image: Cat11,
-    hash: "3602d86957879368",
+    hash: "07766562c05b3500",
   },
   {
     name: "Cat House of Compassion in HeQing Town (Ms. Sleep)",
@@ -208,10 +208,10 @@ export const streams = [
       "Korea Animal Right Advocates focuses on the welfare of animals, rescuing abused animals and advocating for their rights and protection.",
     charityUrl: "https://www.ekara.org/",
     image: Cat12,
-    hash: "0b5f0832ef4bdbb6",
+    hash: "70f929c94a53e83d",
   },
   {
-    name: " Mimi-Chan wants to be happy (Big Faced Brother)",
+    name: "Mimi-Chan wants to be happy (Big Faced Brother)",
     altName: "喵喵酱要快乐",
     front:
       "https://streetcatpull.hellobike.com/live/4953844489504916384_0.m3u8",
@@ -225,7 +225,7 @@ export const streams = [
       "Deutscher Tierschutzbund is committed to improving animal welfare through advocacy, education, and rescue operations.",
     charityUrl: "https://www.tierschutzbund.de/",
     image: Cat13,
-    hash: "83e93bc9f60da6fe",
+    hash: "dff8b5fd5c097472",
   },
   {
     name: "All You Can Eat Buffet (Mr. Boulder, Mrs. Terra)",
@@ -242,7 +242,7 @@ export const streams = [
       "Humane Canada works to promote humane treatment of animals and improve their welfare through national programs.",
     charityUrl: "https://humanecanada.ca/",
     image: Cat14,
-    hash: "eab39386db941845",
+    hash: "17c59efc087deb1b",
   },
   {
     name: "Eat Enough Every Day (Coal Ball)",
@@ -259,7 +259,7 @@ export const streams = [
       "OIPA International advocates for animal rights and welfare, working on issues such as rescue and legislative changes.",
     charityUrl: "https://www.oipa.org/international/",
     image: Cat15,
-    hash: "9457fbdb56124e74",
+    hash: "53cc2cb476afc159",
   },
   {
     name: "Royal Cat Love Meow House No.1 (The Fellas [Badgers])",
@@ -276,7 +276,7 @@ export const streams = [
       "People for Animals is one of India’s largest animal welfare organizations, working to rescue and rehabilitate sick and needy animals. PFA operates shelters, ambulance services, and provides veterinary care across India.",
     charityUrl: "https://www.peopleforanimalsindia.org/",
     image: Cat16,
-    hash: "ca8d7ae0098ca2d5",
+    hash: "7ceaab96ad02c79b",
   },
   {
     name: "GUCCI (Mrs. Gucci)",
@@ -293,7 +293,7 @@ export const streams = [
       "The Society for the Prevention of Cruelty to Animals Singapore is a non-profit organization focused on promoting kindness and preventing cruelty to animals. It provides various services, including animal rescue, shelter, and adoption.",
     charityUrl: "https://spca.org.sg",
     image: Cat17,
-    hash: "cf71b5d8c3f5d7e1",
+    hash: "830c07e551da85cf",
   },
   {
     name: "Abandoned Angel (Mr. Yap)",
@@ -310,7 +310,7 @@ export const streams = [
       "The National Council of SPCAs in South Africa works to prevent cruelty to animals and promote their welfare. It oversees various SPCAs across the country, providing support, education, and enforcement of animal protection laws.",
     charityUrl: "https://nspca.co.za/",
     image: Cat18,
-    hash: "8264e450108cc47b",
+    hash: "c44b6f65dbd6ac46",
   },
   {
     name: "Meow Meow (˶‾᷄ ⁻̫ ‾᷅˵) Rub Rub",
@@ -327,7 +327,7 @@ export const streams = [
       "The Philippine Animal Welfare Society is dedicated to protecting and promoting the humane treatment of all animals. PAWS operates a shelter, advocates for animal rights, and provides education on responsible pet ownership.",
     charityUrl: "http://paws.org.ph/",
     image: Cat19,
-    hash: "f725049db6a8bb1a",
+    hash: "8b29532d4213953d",
   },
   {
     name: "Orange Cat Kindergarten (Mrs. Scam)",
@@ -344,7 +344,7 @@ export const streams = [
       "The Society for the Prevention of Cruelty to Animals Selangor is a non-profit organization in Malaysia that works to improve the welfare of animals through rescue, rehabilitation, and rehoming efforts, as well as public education and advocacy.",
     charityUrl: "https://www.spca.org.my/",
     image: Cat20,
-    hash: "35ba6c2e4495aec6",
+    hash: "f7223ef77945c934",
   },
   {
     name: "Yichenhao (Mr. Cloud & Mr. Peach)",
@@ -361,7 +361,7 @@ export const streams = [
       "The Soi Dog Foundation is a non-profit organization based in Thailand that focuses on improving the welfare of street dogs and cats. It provides medical care, sterilization, and adoption services, and campaigns against the dog meat trade.",
     charityUrl: "https://www.soidog.org/",
     image: Cat21,
-    hash: "ec55e35550a278c0",
+    hash: "a8c4e0a020b3c083",
   },
   {
     name: "Furbao Paradise (Mrs. Gaia & The Titans)",
@@ -377,7 +377,7 @@ export const streams = [
     charityDescription: "",
     charityUrl: "",
     image: Cat22,
-    hash: "5cc8ef4f3e958028",
+    hash: "43ebb12ccb2634c3",
   },
   {
     name: "A Litter of Cats Who Love Each Other (Bob)",
@@ -393,7 +393,7 @@ export const streams = [
     charityDescription: "",
     charityUrl: "",
     image: Cat23,
-    hash: "8c0935664659b763",
+    hash: "d9b2431529dd300f",
   },
   {
     name: "Hi Meow (Mr. Eyes)",
@@ -409,7 +409,7 @@ export const streams = [
     charityDescription: "",
     charityUrl: "",
     image: Cat24,
-    hash: "59eb887f3277021d",
+    hash: "90ed20da04a1229d",
   },
 ] as const;
 
