@@ -39,9 +39,9 @@ jobs:
 
       - name: Run Playwright tests
         env:
-          NEXT_PUBLIC_CONTRACT_ADDRESS: "0xD8966ca52EdD338a24145512fe86cA752CFF649d"
-          NEXT_PUBLIC_THIRDWEB_ID: "cfa42af13f67ff444d39445c50c60ef1"
-          NEXT_PUBLIC_NET: testnet
+          NEXT_PUBLIC_CONTRACT_ADDRESS: ${{ vars.NEXT_PUBLIC_CONTRACT_ADDRESS }}
+          NEXT_PUBLIC_THIRDWEB_ID: ${{ vars.NEXT_PUBLIC_THIRDWEB_ID }}
+          NEXT_PUBLIC_NET: ${{ vars.NEXT_PUBLIC_NET }}
         run: pnpm test:e2e
         
       - uses: actions/upload-artifact@v4
