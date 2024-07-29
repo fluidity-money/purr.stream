@@ -3,15 +3,17 @@ import { streams } from "@/streams";
 import { codeToNameDic } from "@/utils/country2";
 
 describe("Streams verification", () => {
-  streams.forEach(({ hash, ...stream }) => {
+  streams.forEach((stream) => {
     test(`checks Keccak hash for stream named:${stream.name}`, () => {
-      expect(hash).toBe(hashObjByProps(stream));
+      expect(stream.hash).toBe(hashObjByProps(stream));
     });
   });
 
-  streams.forEach(({ countryCode }) => {
-    test(`checks country codes are available in its dictionary`, () => {
-      expect(codeToNameDic).toContain(countryCode);
+  streams
+    .filter((stream) => stream.countryCode)
+    .forEach(({ countryCode }) => {
+      test(`checks country code ${countryCode} are available in its dictionary`, () => {
+        expect(codeToNameDic).toHaveProperty(countryCode);
+      });
     });
-  });
 });

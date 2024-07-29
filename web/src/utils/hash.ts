@@ -4,9 +4,11 @@ import { createHash } from "crypto";
 export function hash(key: string) {
   return createHash("sha3-256").update(key).digest("hex").slice(0, 16);
 }
-
-export function hashObjByProps(obj: { [key: string]: string }) {
-  const concatString = Object.values(obj).reduce((acc, cur) => acc + cur);
+const usedFieldsForHash = ["name", "altName", "front", "above", "behind"];
+export function hashObjByProps(obj: { [key: string]: any }) {
+  const concatString = Object.entries(obj)
+    .filter(([key]) => usedFieldsForHash.includes(key))
+    .reduce((acc, [ck, cv]) => acc + cv, "");
 
   return hash(concatString);
 }
