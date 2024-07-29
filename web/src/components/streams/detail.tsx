@@ -25,23 +25,25 @@ export default function StreamDetail() {
       <div className="flex items-start justify-between pl-5">
         <div className="shrink grow basis-0 flex-col items-start justify-center gap-[5px]">
           <div className="flex flex-col gap-2.5">
-            <div className="text-nowrap text-left text-[25px] font-bold text-white">
+            <div className="text-left text-[25px] font-bold text-white">
               {selectedStream.name} - ({selectedStream.altName})
             </div>
             <div className="flex items-center justify-start gap-6">
-              <Link href={selectedStream.charityUrl} target="_blank">
-                <p className="flex items-center justify-start gap-2 text-nowrap rounded-[23px] border border-neutral-400 px-3 py-[5px]">
-                  <span className="text-base font-medium text-neutral-400">
-                    {country2Flag(selectedStream.countryCode)}
-                  </span>
-                  <span className="text-xs font-bold text-neutral-100">
-                    {country2Name(selectedStream.countryCode as CountryCode)}
-                  </span>{" "}
-                  <span className="text-xs font-bold text-neutral-400">
-                    - {selectedStream.charity}
-                  </span>
-                </p>
-              </Link>
+              {selectedStream.countryCode ? (
+                <Link href={selectedStream.charityUrl} target="_blank">
+                  <p className="flex items-center justify-start gap-2 text-nowrap rounded-[23px] border border-neutral-400 px-3 py-[5px]">
+                    <span className="text-base font-medium text-neutral-400">
+                      {country2Flag(selectedStream.countryCode)}
+                    </span>
+                    <span className="text-xs font-bold text-neutral-100">
+                      {country2Name(selectedStream.countryCode as CountryCode)}
+                    </span>{" "}
+                    <span className="text-xs font-bold text-neutral-400">
+                      - {selectedStream.charity}
+                    </span>
+                  </p>
+                </Link>
+              ) : null}
               <div className="flex h-[19px] items-center justify-start gap-2 rounded-[23px]">
                 <div className="text-sm font-medium text-neutral-400">
                   Local Time:
@@ -59,14 +61,14 @@ export default function StreamDetail() {
         </div>
       </div>
       <div className="inline-flex h-[102px] w-[810px] items-center justify-between pl-5">
-        <div className="flex h-[75px] shrink grow basis-0 items-center justify-between pr-2.5">
-          <div className="h-[75px] shrink grow basis-0 text-sm font-medium text-neutral-400">
-            The RSPCA in Japan works to prevent cruelty and promote kindness to
-            animals. They rescue, rehabilitate, and educate to foster a kind and
-            sustainable society. Join us to create a better world for animals.
+        {selectedStream.charityDescription ? (
+          <div className="flex shrink grow basis-0 items-center justify-between pr-2.5">
+            <div className="shrink grow basis-0 text-sm font-medium text-neutral-400">
+              {selectedStream.charityDescription}
+            </div>
           </div>
-        </div>
-        <div className="flex h-[102px] w-[360px] items-center justify-between rounded-lg bg-[#1E1E1E] px-[25px] py-2.5">
+        ) : null}
+        <div className="flex h-[102px] items-center justify-between gap-4 rounded-lg bg-[#1E1E1E] px-[25px] py-2.5">
           <div className="inline-flex flex-col items-start justify-center gap-[5px] rounded-[9px] py-3">
             <div className="text-xs font-medium text-neutral-500">
               Total Donated

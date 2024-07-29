@@ -17,16 +17,18 @@ export default function StreamItem({
     <li
       onClick={handleSelect}
       className={clsx(
-        "group relative flex w-full cursor-pointer items-center justify-between rounded-lg pb-[15px] pl-[15px] pr-2 pt-2.5 hover:bg-[#1D1D1D]",
+        "group relative flex w-full cursor-pointer items-center justify-between gap-2 rounded-lg pb-[15px] pl-[15px] pr-2 pt-2.5 hover:bg-[#1D1D1D]",
         isSelected && "bg-[#1D1D1D]",
       )}
     >
       <div className="text-sm font-bold text-neutral-100">
         {data.name} - {data.altName}
       </div>
-      <span className="rounded-[23px] border border-neutral-700 px-[9px] py-[5px] text-xs font-bold uppercase text-neutral-400">
-        {country2Flag(data.countryCode)} {data.countryCode}
-      </span>
+      {data.countryCode ? (
+        <span className="text-nowrap rounded-[23px] border border-neutral-700 px-[9px] py-[5px] text-xs font-bold uppercase text-neutral-400">
+          {country2Flag(data.countryCode)} {data.countryCode}
+        </span>
+      ) : null}
       {!isSelected && (
         <div className="absolute inset-x-0 bottom-0 h-px w-full bg-[#404040] group-hover:hidden" />
       )}
