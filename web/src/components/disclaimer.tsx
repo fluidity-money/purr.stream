@@ -32,17 +32,16 @@ export default function Disclaimer() {
             </div>
           </div>
           <div className="flex h-[102px] flex-col items-start justify-start gap-2 self-stretch">
-            <div className="self-stretch text-base font-bold text-neutral-100">
-            </div>
-            <div className="self-stretch text-xs font-medium leading-[18px] text-zinc-400">
-            </div>
+            <div className="self-stretch text-base font-bold text-neutral-100"></div>
+            <div className="self-stretch text-xs font-medium leading-[18px] text-zinc-400"></div>
           </div>
           <div className="flex h-[102px] flex-col items-start justify-start gap-2 self-stretch">
             <div className="self-stretch text-base font-bold text-neutral-100">
               Where can I contact you?
             </div>
             <div className="self-stretch text-xs font-medium leading-[18px] text-zinc-400">
-              For issue reporting, feature suggestions, contact Superposition Discord!
+              For issue reporting, feature suggestions, contact Superposition
+              Discord!
             </div>
           </div>
         </div>
