@@ -20,7 +20,7 @@ async function getLeaderboard() {
     }),
   );
 
-  return results.sort((a, b) => a.score - b.score);
+  return results.sort((a, b) => b.score - a.score);
 }
 
 export default function ReactQueryProvider({
