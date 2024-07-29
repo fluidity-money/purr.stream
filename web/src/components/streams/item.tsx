@@ -17,7 +17,7 @@ export default function StreamItem({
     <li
       onClick={handleSelect}
       className={clsx(
-        "group relative flex h-[51px] w-full cursor-pointer items-center justify-between rounded-lg pb-[15px] pl-[15px] pr-2 pt-2.5 hover:bg-[#1D1D1D]",
+        "group relative flex w-full cursor-pointer items-center justify-between rounded-lg pb-[15px] pl-[15px] pr-2 pt-2.5 hover:bg-[#1D1D1D]",
         isSelected && "bg-[#1D1D1D]",
       )}
     >

@@ -17,19 +17,19 @@ export default function LeaderItem({
   return (
     <li
       onClick={handleSelect}
-      className="inline-flex items-center justify-between border-b border-neutral-700 pb-5 pl-[15px] pr-2 pt-[15px]"
+      className="flex items-center justify-between border-b border-neutral-700 pb-5 pl-[15px] pr-2 pt-[15px]"
     >
       <div className="text-sm font-bold text-neutral-100">{rank}.</div>
       <div className="flex h-14 shrink grow basis-0 items-center justify-start gap-3 px-[15px]">
         <Image
           className="size-14 rounded-lg"
-          src="https://via.placeholder.com/56x56"
+          src={data.image}
           width={56}
           height={56}
           alt="Cat avatar"
         />
         <div className="inline-flex flex-col items-start justify-center gap-2">
-          <div className="text-base font-bold text-neutral-100">
+          <div className="w-[140px] overflow-hidden text-ellipsis text-nowrap text-base font-bold text-neutral-100">
             {data.name} {data.altName}
           </div>
           <span className="rounded-[23px] border border-neutral-700 px-[9px] py-[5px] text-xs font-bold uppercase text-neutral-400">

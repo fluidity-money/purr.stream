@@ -1,7 +1,7 @@
 "use client";
 
 import { useStreamStore } from "@/stores/streamStore";
-import { country2Name, CountryCode } from "../../utils/country2";
+import { country2Flag, country2Name, CountryCode } from "../../utils/country2";
 import Link from "next/link";
 import Image from "next/image";
 import SPNIcon from "#/images/icons/spn.svg";
@@ -16,7 +16,7 @@ export default function StreamDetail() {
     queryKey: ["leaderboard"],
   });
   const donation =
-    leaders?.filter((cat) => cat.hash === selectedStream.hash)?.[0].score ?? 0;
+    leaders?.filter((cat) => cat.hash === selectedStream.hash)?.[0]?.score ?? 0;
   const catIndex =
     leaders?.findIndex((cat) => selectedStream.hash === cat.hash) ?? -1;
   const rank = catIndex === -1 ? "N/A" : catIndex + 1;
@@ -32,7 +32,7 @@ export default function StreamDetail() {
               <Link href={selectedStream.charityUrl} target="_blank">
                 <p className="flex items-center justify-start gap-2 text-nowrap rounded-[23px] border border-neutral-400 px-3 py-[5px]">
                   <span className="text-base font-medium text-neutral-400">
-                    🇯🇵
+                    {country2Flag(selectedStream.countryCode)}
                   </span>
                   <span className="text-xs font-bold text-neutral-100">
                     {country2Name(selectedStream.countryCode as CountryCode)}
