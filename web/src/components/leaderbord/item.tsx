@@ -32,9 +32,11 @@ export default function LeaderItem({
           <div className="w-[140px] overflow-hidden text-ellipsis text-nowrap text-base font-bold text-neutral-100">
             {data.name} {data.altName}
           </div>
-          <span className="rounded-[23px] border border-neutral-700 px-[9px] py-[5px] text-xs font-bold uppercase text-neutral-400">
-            {country2Flag(data.countryCode)} {data.countryCode}
-          </span>
+          {data.countryCode ? (
+            <span className="rounded-[23px] border border-neutral-700 px-[9px] py-[5px] text-xs font-bold uppercase text-neutral-400">
+              {country2Flag(data.countryCode)} {data.countryCode}
+            </span>
+          ) : null}
         </div>
       </div>
       <div className="flex h-10 items-center justify-between gap-6">
