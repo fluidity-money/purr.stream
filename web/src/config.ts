@@ -26,6 +26,10 @@ export const config = {
   features: {
     web3: {
       all: true,
+      donation: {
+        clickUnit: 0.005,
+      },
     },
+    search: false,
   },
 };

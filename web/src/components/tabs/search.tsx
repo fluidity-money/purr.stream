@@ -1,4 +1,7 @@
+import { config } from "@/config";
+
 export default function Search() {
+  if (!config.features.search) return null;
   return (
     <input
       type="text"
