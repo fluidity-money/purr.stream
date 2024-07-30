@@ -2,6 +2,7 @@ import { config } from "@/config";
 import { create } from "zustand";
 import { persist } from "zustand/middleware";
 import { Account } from "thirdweb/wallets";
+import toast from "react-hot-toast";
 
 interface UserStore {
   favs: string[];
@@ -103,7 +104,15 @@ export async function handleDonation(id: string, account: Account) {
   const randomStatus = Math.round(Math.random()) ? "success" : "error";
 
   return new Promise((res) => {
-    setTimeout(() => updateDonationStatus(id, randomStatus), 2000);
+    setTimeout(() => {
+      updateDonationStatus(id, randomStatus);
+
+      if (randomStatus === "error") {
+        toast.error("Not enough balance on the wallet.");
+      } else {
+        toast.success("Donation successful!");
+      }
+    }, 2000);
     setTimeout(() => {
       removeDonation(id);
       res(id);

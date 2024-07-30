@@ -6,6 +6,7 @@ import Header from "@/components/header";
 import clsx from "clsx";
 import Footer from "@/components/footer";
 import Providers from "@/providers";
+import { Toaster } from "react-hot-toast";
 
 const inter = Inter({ subsets: ["latin"], variable: "--font-inter" });
 const satoshi = localFont({
@@ -58,6 +59,17 @@ export default function RootLayout({
           "flex min-h-screen flex-col items-center justify-between bg-stone-900 px-[90px] pb-[50px] pt-[80px] text-white",
         )}
       >
+        <Toaster
+          toastOptions={{
+            style: {
+              background: "#1E1E1E",
+              color: "#fff",
+              borderWidth: 1,
+              borderColor: "#333",
+            },
+            position: "top-right",
+          }}
+        />
         <div>
           <Providers>
             <Header />
