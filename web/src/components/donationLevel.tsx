@@ -5,6 +5,10 @@ import clsx from "clsx";
 import { useEffect } from "react";
 import { useActiveAccount } from "thirdweb/react";
 import Loader from "./loader";
+import Image from "next/image";
+import CatLoading from "#/images/icons/cat-loading.svg";
+import CatSuccess from "#/images/icons/cat-succes.svg";
+import CatError from "#/images/icons/cat-error.svg";
 export default function DonationLevel() {
   const account = useActiveAccount();
   const donationClicks = useUserStore((s) => s.donationClicks);
@@ -26,10 +30,7 @@ export default function DonationLevel() {
             <li
               key={item.id}
               className={clsx(
-                item.status === "loading" && "bg-purple-400",
-                item.status === "success" && "bg-green-400",
-                item.status === "error" && "bg-red-400",
-                "flex size-20 flex-col items-center justify-center gap-1 rounded-full text-xl",
+                "relative flex size-20 flex-col items-center justify-center gap-1 rounded-full text-xl",
               )}
             >
               {item.status === "loading" ? <Loader /> : null}
@@ -40,6 +41,20 @@ export default function DonationLevel() {
                 <div className="size-5">✖️</div>
               ) : null}
               {item.donation * 0.005}
+              <Image
+                src={
+                  item.status === "loading"
+                    ? CatLoading
+                    : item.status === "success"
+                      ? CatSuccess
+                      : item.status === "error"
+                        ? CatError
+                        : undefined
+                }
+                alt="avatar"
+                className="absolute -inset-4 z-[-1]"
+                fill
+              />
             </li>
           ))}
         </ul>
