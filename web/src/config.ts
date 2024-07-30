@@ -28,6 +28,7 @@ export const config = {
       all: true,
       donation: {
         clickUnit: 0.005,
+        debounceTime: 800,
       },
     },
     search: false,

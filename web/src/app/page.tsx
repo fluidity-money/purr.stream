@@ -1,6 +1,7 @@
 import Tabs from "@/components/tabs";
 import StreamDetail from "@/components/streams/detail";
 import dynamic from "next/dynamic";
+import DonationLevel from "@/components/donationLevel";
 const StreamPlayer = dynamic(() => import("@/components/streams/player"), {
   ssr: false,
 });
@@ -14,6 +15,9 @@ export default function Home() {
       <div className="flex flex-[2] flex-col">
         <StreamPlayer />
         <StreamDetail />
+        <div className="fixed bottom-2 right-2">
+          <DonationLevel />
+        </div>
       </div>
     </section>
   );
