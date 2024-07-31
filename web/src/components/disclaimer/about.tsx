@@ -1,15 +1,15 @@
 export default function DisclaimerAbout() {
   return (
     <div className="inline-flex h-[592px] flex-col items-start justify-start gap-7">
-      <div className="self-stretch text-[25px] font-bold text-[#aeaeae]">
+      <div className="text-[25px] font-bold text-[#aeaeae]">
         About purr.stream
       </div>
-      <div className="flex h-[530px] flex-col items-start justify-start gap-[31px] self-stretch">
-        <div className="flex h-[282px] flex-col items-start justify-start gap-2 self-stretch">
-          <div className="self-stretch text-base font-bold text-[#a2a2f2]">
+      <div className="flex flex-col items-start justify-start gap-[31px]">
+        <div className="flex flex-col items-start justify-start gap-2">
+          <div className="text-base font-bold text-[#a2a2f2]">
             What is purr.stream?
           </div>
-          <div className="self-stretch">
+          <p>
             <span className="text-xs font-medium leading-[18px] text-[#aeaeae]">
               Taking inspiration from Meow Camera, Purr.Stream is an alternative
               viewer for feeders from the Hello Street Cat / JieMao (街猫) app.
@@ -30,24 +30,24 @@ export default function DisclaimerAbout() {
               country&apos;s organisation, participate in a weekly leaderboard,
               and engage in Discord chats based on donations.
             </span>
-          </div>
+          </p>
         </div>
-        <div className="flex h-[102px] flex-col items-start justify-start gap-2 self-stretch">
-          <div className="self-stretch text-base font-bold text-[#a2a2f2]">
+        <div className="flex flex-col items-start justify-start gap-2">
+          <div className="text-base font-bold text-[#a2a2f2]">
             What’s HelloStreetCat?
           </div>
-          <div className="self-stretch text-xs font-medium leading-[18px] text-[#aeaeae]">
+          <div className="text-xs font-medium leading-[18px] text-[#aeaeae]">
             The Hello Street Cat app provides a platform for many cat feeders
             around China which can have food dispensed to them through the app.
             The cameras you see are only active if a viewer is watching on the
             app.
           </div>
         </div>
-        <div className="flex h-[84px] flex-col items-start justify-start gap-2 self-stretch">
-          <div className="self-stretch text-base font-bold text-[#a2a2f2]">
+        <div className="flex flex-col items-start justify-start gap-2">
+          <div className="text-base font-bold text-[#a2a2f2]">
             Contact & Feedback
           </div>
-          <div className="self-stretch text-xs font-medium leading-[18px] text-[#aeaeae]">
+          <div className="text-xs font-medium leading-[18px] text-[#aeaeae]">
             For issue reporting, feature suggestions and everything else, you
             can use the #meow-camera channel in the Superposition discord
             server.

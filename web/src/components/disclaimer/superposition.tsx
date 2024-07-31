@@ -1,15 +1,15 @@
 export default function DisclaimerSuperposition() {
   return (
-    <div className="inline-flex h-[621px] flex-col items-start justify-start gap-7">
-      <div className="self-stretch text-[25px] font-bold text-[#aeaeae]">
+    <div className="inline-flex flex-col items-start justify-start gap-7">
+      <div className="text-[25px] font-bold text-[#aeaeae]">
         Explore Superposition
       </div>
-      <div className="flex h-[559px] flex-col items-start justify-start gap-[31px] self-stretch">
-        <div className="flex h-[354px] flex-col items-start justify-start gap-2 self-stretch">
-          <div className="self-stretch text-base font-bold text-[#a2a2f2]">
+      <div className="flex flex-col items-start justify-start gap-[31px]">
+        <div className="flex flex-col items-start justify-start gap-2">
+          <div className="text-base font-bold text-[#a2a2f2]">
             What is Superposition?
           </div>
-          <div className="self-stretch">
+          <div className="">
             <span className="text-xs font-medium leading-[18px] text-[#aeaeae]">
               Superposition is the blockchain that pays you to use it. <br />
             </span>
@@ -37,11 +37,11 @@ export default function DisclaimerSuperposition() {
             </span>
           </div>
         </div>
-        <div className="flex h-[174px] flex-col items-start justify-start gap-2 self-stretch">
-          <div className="self-stretch text-base font-bold text-[#a2a2f2]">
+        <div className="flex h-[174px] flex-col items-start justify-start gap-2">
+          <div className="text-base font-bold text-[#a2a2f2]">
             DeFi & Beyond
           </div>
-          <div className="self-stretch text-xs font-medium leading-[18px] text-[#aeaeae]">
+          <div className="text-xs font-medium leading-[18px] text-[#aeaeae]">
             Superposition is re-imagining the way users interact with, engage,
             and explore the crypto space. By rewarding users for their
             exploration and incentivising builders and developers to create

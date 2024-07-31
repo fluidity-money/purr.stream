@@ -1,13 +1,13 @@
 export default function DisclaimerHow() {
   return (
     <>
-      <div className="inline-flex h-[1019px] flex-col items-start justify-start gap-7">
-        <div className="self-stretch text-[25px] font-bold text-[#aeaeae]">
+      <div className="inline-flex flex-col items-start justify-start gap-7">
+        <div className="text-[25px] font-bold text-[#aeaeae]">
           How it works (1 - 2 - 3!).
         </div>
-        <div className="flex h-[957px] flex-col items-start justify-start gap-[31px] self-stretch">
-          <div className="flex h-[162px] flex-col items-start justify-start gap-2 self-stretch">
-            <div className="self-stretch">
+        <div className="flex flex-col items-start justify-start gap-[31px]">
+          <div className="flex flex-col items-start justify-start gap-2">
+            <div className="">
               <span className="text-xs font-bold leading-[18px] text-[#aeaeae]">
                 Login and connect you crypto wallet to donate your testnet SPN
                 to your favourite cat stream! Each stream corresponds to a
@@ -23,7 +23,7 @@ export default function DisclaimerHow() {
               </span>
             </div>
           </div>
-          <div className="flex h-[228px] flex-col items-start justify-start gap-2 self-stretch">
+          <div className="flex flex-col items-start justify-start gap-2 self-stretch">
             <div className="self-stretch text-base font-bold text-[#a2a2f2]">
               Step 1: Getting Started
             </div>
@@ -58,11 +58,11 @@ export default function DisclaimerHow() {
               </span>
             </div>
           </div>
-          <div className="flex h-[282px] flex-col items-start justify-start gap-2 self-stretch">
-            <div className="self-stretch text-base font-bold text-[#a2a2f2]">
+          <div className="flex flex-col items-start justify-start gap-2">
+            <div className="text-base font-bold text-[#a2a2f2]">
               Step 2: Engaging with Cat Streams
             </div>
-            <div className="self-stretch">
+            <div className="">
               <span className="text-xs font-bold leading-[18px] text-[#aeaeae]">
                 Donate to Cat Streams:
                 <br />
@@ -99,12 +99,12 @@ export default function DisclaimerHow() {
               </span>
             </div>
           </div>
-          <br />
-          <div className="flex h-48 flex-col items-start justify-start gap-2 self-stretch">
+
+          <div className="flex flex-col items-start justify-start gap-2">
             <div className="self-stretch text-base font-bold text-[#a2a2f2]">
               Step 3: Exploring Streams
             </div>
-            <div className="self-stretch">
+            <div className="">
               <span className="text-xs font-bold leading-[18px] text-[#aeaeae]">
                 Search for Streams:
                 <br />
