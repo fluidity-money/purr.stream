@@ -1,6 +1,6 @@
 import { streams } from "@/streams";
-import FavItem from "./item";
 import { useUserStore } from "@/stores/userStore";
+import StreamItem from "../streams/item";
 
 export default function FavList() {
   const favs = useUserStore((s) => s.favs);
@@ -20,7 +20,7 @@ export default function FavList() {
   return (
     <ul className="flex flex-col gap-[15px]">
       {favList.map((stream) => (
-        <FavItem data={stream} key={stream.hash} />
+        <StreamItem favorite data={stream} key={stream.hash} />
       ))}
     </ul>
   );

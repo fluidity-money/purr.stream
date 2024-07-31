@@ -5,8 +5,10 @@ import clsx from "clsx";
 import { country2Flag } from "../../utils/country2";
 export default function StreamItem({
   data,
+  favorite = false,
 }: {
   data: (typeof streams)[number];
+  favorite?: boolean;
 }) {
   const selectStream = useStreamStore((state) => state.selectStream);
   const selectedStream = useStreamStore((state) => state.selectedStream);
@@ -17,11 +19,12 @@ export default function StreamItem({
     <li
       onClick={handleSelect}
       className={clsx(
-        "group relative flex w-full cursor-pointer items-center justify-between gap-2 rounded-lg pb-[15px] pl-[15px] pr-2 pt-2.5 hover:bg-[#1D1D1D]",
+        "group relative flex cursor-pointer items-center justify-between gap-2 rounded-lg pb-[15px] pl-[15px] pr-2 pt-2.5 hover:bg-[#1D1D1D]",
         isSelected && "bg-[#1D1D1D]",
       )}
     >
       <div className="text-sm font-bold text-neutral-100">
+        {favorite ? <span className="mr-[10px]">❤️</span> : null}
         {data.name} - {data.altName}
       </div>
       {data.countryCode ? (
