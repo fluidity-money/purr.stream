@@ -17,6 +17,11 @@ export const config = {
       },
     },
   },
+  discord: {
+    server: "1148874308446326866",
+    channel: "1264916118079016980",
+    location: ["bottom", "left"],
+  },
   contracts: {
     donation: {
       address: process.env.NEXT_PUBLIC_CONTRACT_ADDRESS,
