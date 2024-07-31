@@ -1,12 +1,11 @@
-/* eslint-disable tailwindcss/no-custom-classname */
 import Logo from "#/images/logo.svg";
-import FaucetIcon from "#/images/icons/faucet.svg";
 import Image from "next/image";
 import Link from "next/link";
 import ConnectButton from "@/components/buttons/connectButton";
+import FaucetButton from "./buttons/faucetButton";
 export default function Header() {
   return (
-    <div className="mb-[15px] inline-flex h-[35px] w-full max-w-screen-xl items-center justify-between">
+    <div className="mb-[15px] inline-flex h-[50px] w-full max-w-screen-xl items-center justify-between">
       <Image
         src={Logo}
         alt="purr.stream"
@@ -29,15 +28,8 @@ export default function Header() {
           </div>
         </Link>
       </div>
-      <div className="flex h-[35px] items-center justify-between gap-2">
-        <Link
-          target="_blank"
-          href="https://faucet.superposition.so"
-          className="flex items-center justify-start gap-[5px] rounded-lg bg-neutral-100 px-[15px] py-2"
-        >
-          <Image src={FaucetIcon} className="size-[3.5]" alt="Go to faucet" />
-          <div className="text-sm font-bold text-stone-950">Faucet</div>
-        </Link>
+      <div className="flex h-[50px] items-center justify-between gap-2">
+        <FaucetButton />
         <ConnectButton />
       </div>
     </div>
