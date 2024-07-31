@@ -23,9 +23,9 @@ export default function DonationLevel() {
   }, [curr?.id, account]);
 
   return (
-    <div>
+    <div className="fixed bottom-4 right-4">
       {donationQueue.length > 0 ? (
-        <ul className="flex flex-col gap-2">
+        <ul className="flex flex-col items-center justify-center gap-2">
           {donationQueue.map((item) => (
             <li
               key={item.id}
@@ -59,7 +59,10 @@ export default function DonationLevel() {
           ))}
         </ul>
       ) : null}
-      <div className="text-2xl font-extralight">{totalDonation.toFixed(3)}</div>
+      <div className="flex flex-col gap-1 rounded-lg bg-[#1E1E1E] px-4 py-2 text-center text-2xl font-extralight">
+        <span className="text-sm font-bold text-neutral-500">Donation</span>
+        {totalDonation.toFixed(3)}
+      </div>
     </div>
   );
 }

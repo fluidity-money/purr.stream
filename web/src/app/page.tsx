@@ -17,9 +17,7 @@ export default function Home() {
           <StreamPlayer />
         </div>
         <StreamDetail />
-        <div className="fixed bottom-2 right-2">
-          <DonationLevel />
-        </div>
+        <DonationLevel />
       </div>
     </section>
   );
