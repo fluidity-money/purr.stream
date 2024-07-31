@@ -9,7 +9,7 @@ const StreamPlayer = dynamic(() => import("@/components/streams/player"), {
 export default function Home() {
   return (
     <section data-test="home-page" className="flex flex-row gap-[25px]">
-      <div className="flex flex-1 flex-col">
+      <div className="flex flex-1 flex-col overflow-hidden">
         <Tabs />
       </div>
       <div className="flex flex-[2] flex-col">
