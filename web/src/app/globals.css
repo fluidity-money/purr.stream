@@ -10,3 +10,19 @@
   line-height: 1.25rem !important /* 20px */;
   font-weight: 700 !important;
 }
+
+.tw-connected-wallet {
+  max-height: 52px !important;
+  font-family: var(--font-satoshi) !important;
+  min-width: 160px !important;
+  border-radius: 8px !important;
+}
+
+.tw-connected-wallet div:not(:first-child) {
+  gap: 0px !important;
+}
+
+.tw-connected-wallet img {
+  width: 24px !important;
+  height: 24px !important;
+}
