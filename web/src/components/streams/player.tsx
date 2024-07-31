@@ -7,14 +7,8 @@ import CameraSwithButton from "@/components/buttons/cameraSwitchButton";
 import FavButton from "@/components/buttons/favButton";
 import Bowser from "bowser";
 import clsx from "clsx";
-import dynamic from "next/dynamic";
+import CopyUrlButton from "../buttons/copyUrlButton";
 
-const CopyUrlButton = dynamic(
-  () => import("@/components/buttons/copyUrlButton"),
-  {
-    ssr: false,
-  },
-);
 export default function StreamPlayer() {
   const selectedStream = useStreamStore((state) => state.selectedStream);
   const videoRef = useRef<HTMLVideoElement>(null);
@@ -46,34 +40,30 @@ export default function StreamPlayer() {
     return () => hls?.destroy();
   }, [selectedStream.cameraStreamUrl, isValidBrowser]);
 
-  return (
-    <div className="relative flex aspect-video rounded-lg bg-[#1E1E1E] object-cover">
-      {isValidBrowser ? (
-        <>
-          <video
-            ref={videoRef}
-            data-test="video-player"
-            autoPlay
-            playsInline
-            loop
-            muted
-            className="relative z-[2] aspect-video rounded-lg object-cover"
-          />
-          <p className={clsx("absolute inset-0 z-[1]", placeholderStyle)}>
-            Turning on the cat camera...
-          </p>
-          <div className="absolute bottom-2 left-2 z-[3] flex gap-1">
-            <CameraSwithButton />
-            <FavButton hash={selectedStream.hash} />
-            <CopyUrlButton />
-          </div>
-        </>
-      ) : (
-        <p className={clsx("size-full", placeholderStyle)}>
-          This browser is not supported yet. <br /> Please use a different
-          browser such as Chrome, Safari, or Opera.
-        </p>
-      )}
-    </div>
+  return isValidBrowser ? (
+    <>
+      <video
+        ref={videoRef}
+        data-test="video-player"
+        autoPlay
+        playsInline
+        loop
+        muted
+        className="relative z-[2] aspect-video rounded-lg object-cover"
+      />
+      <p className={clsx("absolute inset-0 z-[1]", placeholderStyle)}>
+        Turning on the cat camera...
+      </p>
+      <div className="absolute bottom-2 left-2 z-[3] flex gap-1">
+        <CameraSwithButton />
+        <FavButton hash={selectedStream.hash} />
+        <CopyUrlButton />
+      </div>
+    </>
+  ) : (
+    <p className={clsx("size-full", placeholderStyle)}>
+      This browser is not supported yet. <br /> Please use a different browser
+      such as Chrome, Safari, or Opera.
+    </p>
   );
 }

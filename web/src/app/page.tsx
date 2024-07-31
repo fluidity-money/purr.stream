@@ -13,7 +13,9 @@ export default function Home() {
         <Tabs />
       </div>
       <div className="flex flex-[2] flex-col">
-        <StreamPlayer />
+        <div className="relative flex aspect-video rounded-lg bg-[#1E1E1E] object-cover">
+          <StreamPlayer />
+        </div>
         <StreamDetail />
         <div className="fixed bottom-2 right-2">
           <DonationLevel />
