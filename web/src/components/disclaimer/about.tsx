@@ -26,9 +26,9 @@ export default function DisclaimerAbout() {
             </span>
             <span className="text-xs font-medium leading-[18px] text-[#aeaeae]">
               , users can connect their crypto wallets, donate SPN testnet
-              tokens to specific cat streams and their corresponding country's
-              organisation, participate in a weekly leaderboard, and engage in
-              Discord chats based on donations.
+              tokens to specific cat streams and their corresponding
+              country&apos;s organisation, participate in a weekly leaderboard,
+              and engage in Discord chats based on donations.
             </span>
           </div>
         </div>

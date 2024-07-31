@@ -12,7 +12,7 @@ export default function DisclaimerHow() {
                 Login and connect you crypto wallet to donate your testnet SPN
                 to your favourite cat stream! Each stream corresponds to a
                 specific country and an animal welfare organisation :3 <br />
-                If you're new to the Web3 space, here is a tutorial!
+                If you&apos;re new to the Web3 space, here is a tutorial!
                 <br />
                 <br />
               </span>
@@ -94,8 +94,8 @@ export default function DisclaimerHow() {
                 • Engage in Discord chats where donations are made off-chain
                 based on weekly leaderboard positions.
                 <br /> • Weekly, we compile a list of top streams and their
-                countries' welfare organisation. The top cat stream based on
-                this list receives a donation.
+                countries&apos; welfare organisation. The top cat stream based
+                on this list receives a donation.
               </span>
             </div>
           </div>
