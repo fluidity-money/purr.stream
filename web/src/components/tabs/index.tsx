@@ -15,26 +15,47 @@ export default function TabNavigation() {
   return (
     <>
       {curTabIdx === 2 ? null : <Search />}
-      <TabGroup selectedIndex={curTabIdx} onChange={changeTab}>
+      <TabGroup
+        selectedIndex={curTabIdx}
+        onChange={changeTab}
+        className={"flex flex-1 flex-col"}
+      >
         <TabList className={"my-[25px] flex w-full gap-2"}>
           <TabButton title="All Streams" emoji="😺" />
           <TabButton title="Your Favorites" emoji="❤️" />
           <TabButton title="See Leaderboard" emoji="🏆" />
         </TabList>
-        <TabPanels>
-          <TabPanel>
-            <StreamList />
-          </TabPanel>
-          <TabPanel>
-            <FavList />
-          </TabPanel>
-          <TabPanel>
-            <Countdown />
-            <Stats />
-            <LeaderList />
-          </TabPanel>
+        <TabPanels className="flex grow flex-col">
+          <TabPage body={<StreamList />} />
+          <TabPage body={<FavList />} />
+          <TabPage
+            head={
+              <>
+                <Countdown />
+                <Stats />
+              </>
+            }
+            body={<LeaderList />}
+          />
         </TabPanels>
       </TabGroup>
     </>
+  );
+}
+
+function TabPage({
+  head,
+  body,
+}: {
+  head?: React.ReactNode;
+  body: React.ReactNode;
+}) {
+  return (
+    <TabPanel className={"flex grow flex-col"}>
+      {head}
+      <div className="relative flex grow">
+        <div className="absolute inset-0 overflow-y-scroll">{body}</div>
+      </div>
+    </TabPanel>
   );
 }
