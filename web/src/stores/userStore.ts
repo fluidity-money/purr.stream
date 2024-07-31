@@ -3,7 +3,8 @@ import { create } from "zustand";
 import { persist } from "zustand/middleware";
 import { Account } from "thirdweb/wallets";
 import toast from "react-hot-toast";
-
+import { prepareContractCall, sendTransaction, toUnits } from "thirdweb";
+import { contract } from "@/providers/thirdwebClient";
 interface UserStore {
   favs: string[];
   favStream: (streamHash: string) => void;
@@ -62,7 +63,35 @@ export const useUserStore = create<UserStore>()(
     },
   ),
 );
-function updateDonationStatus(id: string, status: "success" | "error") {
+
+function handleErrorMessage(error: unknown) {
+  if (error instanceof Error) {
+    return error.message;
+  }
+
+  if (
+    error instanceof Object &&
+    typeof error === "object" &&
+    Object.hasOwn(error, "message")
+  ) {
+    const errorMessage = (error as { message: string }).message;
+
+    if (errorMessage.includes("insufficient funds")) {
+      return "Insufficient funds, go to faucet";
+    } else if (errorMessage) {
+      return errorMessage;
+    } else {
+      return "Unknown error";
+    }
+  }
+
+  return "Unknown error";
+}
+function updateDonationStatus(
+  id: string,
+  status: "success" | "error",
+  error?: unknown,
+) {
   useUserStore.setState((state) => ({
     donationQueue: state.donationQueue.map((item) =>
       item.id === id
@@ -73,6 +102,12 @@ function updateDonationStatus(id: string, status: "success" | "error") {
         : item,
     ),
   }));
+  if (status === "success") {
+    toast.success("Donation successful!");
+  } else {
+    console.error(error);
+    toast.error(handleErrorMessage(error));
+  }
 }
 function removeDonation(id: string) {
   useUserStore.setState((state) => ({
@@ -80,42 +115,24 @@ function removeDonation(id: string) {
   }));
 }
 export async function handleDonation(id: string, account: Account) {
-  // try {
-  //   const { hash, donation } = useUserStore
-  //     .getState()
-  //     .donationQueue.find((item) => item.id === id)!;
+  try {
+    const { hash, donation } = useUserStore
+      .getState()
+      .donationQueue.find((item) => item.id === id)!;
 
-  //   const transaction = prepareContractCall({
-  //     contract,
-  //     method: config.contracts.donation.abi[2].name,
-  //     params: [`0x${hash}`],
-  //     value: toUnits((0.005 * donation).toFixed(3), 18),
-  //   });
+    const transaction = prepareContractCall({
+      contract,
+      method: config.contracts.donation.abi[2].name,
+      params: [`0x${hash}`],
+      value: toUnits((0.005 * donation).toFixed(3), 18),
+    });
 
-  //   await sendTransaction({ transaction, account });
-  //   updateDonationStatus(id, "success");
-  // } catch (e) {
-  //   console.error(e);
-  //   updateDonationStatus(id, "error");
-  // } finally {
-  //   await new Promise((res) => setTimeout(res, 2000));
-  //   removeDonation(id);
-  // }
-  const randomStatus = Math.round(Math.random()) ? "success" : "error";
-
-  return new Promise((res) => {
-    setTimeout(() => {
-      updateDonationStatus(id, randomStatus);
-
-      if (randomStatus === "error") {
-        toast.error("Not enough balance on the wallet.");
-      } else {
-        toast.success("Donation successful!");
-      }
-    }, 2000);
-    setTimeout(() => {
-      removeDonation(id);
-      res(id);
-    }, 4000);
-  });
+    await sendTransaction({ transaction, account });
+    updateDonationStatus(id, "success");
+  } catch (e) {
+    updateDonationStatus(id, "error", e);
+  } finally {
+    await new Promise((res) => setTimeout(res, 2000));
+    removeDonation(id);
+  }
 }
