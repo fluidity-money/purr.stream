@@ -56,7 +56,7 @@ export default function RootLayout({
           satoshi.className,
           satoshi.variable,
           inter.variable,
-          "flex min-h-screen flex-col items-center justify-between bg-stone-900 px-[90px] pb-[50px] pt-[80px] text-white",
+          "flex min-h-screen flex-col items-center justify-between bg-stone-900 py-4 text-white",
         )}
       >
         <Toaster
