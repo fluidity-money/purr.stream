@@ -70,10 +70,12 @@ export default function RootLayout({
             position: "top-right",
           }}
         />
-        <div>
+        <div className="flex grow flex-col">
           <Providers>
             <Header />
-            <main className="my-[15px] w-full max-w-7xl">{children}</main>
+            <main className="my-[15px] flex w-full max-w-7xl grow flex-col">
+              {children}
+            </main>
           </Providers>
         </div>
         <Footer />
