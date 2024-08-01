@@ -12,6 +12,7 @@ import { useCoolMode } from "@/hooks/useCoolMode";
 import FavedIcon from "#/images/icons/faved.svg";
 import Loader from "../loader";
 import { config } from "@/config";
+import useClickAnimation from "@/hooks/useClickAnimation";
 
 export default function DonateButton() {
   const account = useActiveAccount();
@@ -21,15 +22,12 @@ export default function DonateButton() {
   const incrementDonationClicks = useUserStore(
     (s) => s.incrementDonationClicks,
   );
-  const [isClicked, setIsClicked] = useState(false);
   const isConnecting = isConnectingModal || isAutoConnecting;
+  const { animationStyles, startAnimation } = useClickAnimation(100);
   const handleClick = () => {
     if (account) {
-      setIsClicked(true);
+      startAnimation();
       incrementDonationClicks(selectedStream.hash);
-      setTimeout(() => {
-        setIsClicked(false);
-      }, 100);
     } else {
       connect({
         client: config.thirdweb.client,
@@ -47,9 +45,9 @@ export default function DonateButton() {
       onClick={handleClick}
       disabled={isConnecting}
       className={clsx(
+        animationStyles,
         isConnecting && "pointer-events-none",
-        isClicked && "hover:scale-90",
-        "relative inline-flex h-[69px] shrink grow basis-0 cursor-pointer flex-col items-center justify-center gap-1 rounded-lg bg-neutral-100 px-5 py-[25px] transition-transform duration-300 hover:scale-110",
+        "relative inline-flex h-[69px] shrink grow basis-0 cursor-pointer flex-col items-center justify-center gap-1 rounded-lg bg-neutral-100 px-5 py-[25px]",
       )}
     >
       {isConnecting ? (
