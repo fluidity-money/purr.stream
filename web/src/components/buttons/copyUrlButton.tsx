@@ -36,11 +36,15 @@ export default function CopyUrlButton() {
       >
         <Image src={UrlIcon} alt="Copy url" width={16} height={17} />
       </div>
-      {isCopied ? (
-        <span className="absolute -top-10 rounded-md bg-black px-4 py-2 text-sm font-medium">
-          Copied
-        </span>
-      ) : null}
+      <span
+        className={clsx(
+          isCopied ? "opacity-100" : "opacity-0",
+          "absolute -top-11 flex justify-center rounded-md bg-stone-900/90 px-4 py-2 text-center text-sm font-medium transition-opacity duration-300",
+        )}
+      >
+        Copied
+        <div className="absolute -bottom-1 size-0 rounded-md border-x-4 border-t-4 border-transparent border-t-stone-900/90" />
+      </span>
     </div>
   );
 }

@@ -8,6 +8,8 @@ import Stats from "@/components/leaderbord/stats";
 import Search from "@/components/tabs/search";
 import TabButton from "../buttons/tabButton";
 import { useTabStore } from "@/stores/tabStore";
+import useOnMouseEnterAnimation from "@/hooks/useMouseEnterAnimation";
+import clsx from "clsx";
 
 export default function TabNavigation() {
   const { changeTab, curTabIdx } = useTabStore();
@@ -43,6 +45,26 @@ export default function TabNavigation() {
   );
 }
 
+function ScrollMore({ styles }: { styles: string }) {
+  return (
+    <div
+      className={clsx(
+        styles,
+        "absolute inset-x-2 bottom-2 z-10 flex items-center",
+      )}
+    >
+      <div className="mx-auto flex h-[19px] items-center justify-center gap-[13px] rounded-lg bg-black/50 p-4">
+        <div className="flex h-[18px] w-[4px] flex-col items-end rounded-xl border border-[#d9d9d9]">
+          <div className="h-2 w-[2px] rounded-xl bg-[#d9d9d9]" />
+        </div>
+        <div className="text-sm font-medium text-[#797979]">
+          Scroll For More
+        </div>
+      </div>
+    </div>
+  );
+}
+
 function TabPage({
   head,
   body,
@@ -50,11 +72,18 @@ function TabPage({
   head?: React.ReactNode;
   body: React.ReactNode;
 }) {
+  const { startAnimation, animationStyles } = useOnMouseEnterAnimation();
   return (
     <TabPanel className={"flex grow flex-col"}>
       {head}
       <div className="relative flex grow">
-        <div className="absolute inset-0 overflow-y-scroll">{body}</div>
+        <ScrollMore styles={animationStyles} />
+        <div
+          className="absolute inset-0 overflow-y-scroll"
+          onMouseEnter={startAnimation}
+        >
+          {body}
+        </div>
       </div>
     </TabPanel>
   );
