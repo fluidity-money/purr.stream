@@ -20,7 +20,7 @@ export default function Footer() {
   const [disclaimerIndex, setDisclaimerIndex] = useState<DisclaimerIndexes>(0);
 
   return (
-    <div className="relative mt-[15px] flex h-[59px] w-full max-w-screen-xl items-center justify-between">
+    <div className="relative mt-[15px] flex h-[59px] w-full max-w-screen-2xl items-center justify-between">
       <div className="flex h-[31px] items-center justify-between gap-4">
         <div
           className="flex cursor-pointer items-center justify-start gap-1 rounded-[23px] py-1.5"

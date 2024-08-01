@@ -5,7 +5,7 @@ import ConnectButton from "@/components/buttons/connectButton";
 import FaucetButton from "./buttons/faucetButton";
 export default function Header() {
   return (
-    <div className="mb-[15px] inline-flex h-[50px] w-full max-w-screen-xl items-center justify-between">
+    <div className="mb-[15px] inline-flex h-[50px] items-center justify-between">
       <Image
         src={Logo}
         alt="purr.stream"

@@ -20,15 +20,27 @@ export default function StreamItem({
       onClick={handleSelect}
       className={clsx(
         "group relative flex cursor-pointer items-center justify-between gap-2 rounded-lg pb-[15px] pl-[15px] pr-2 pt-2.5 hover:bg-[#1D1D1D]",
-        isSelected && "bg-[#1D1D1D]",
+        isSelected && "bg-[#2e2e2e]",
       )}
     >
-      <div className="text-sm font-bold text-neutral-100">
+      <div
+        className={clsx(
+          isSelected ? "text-tintLight" : "text-neutral-100",
+          "text-sm font-bold",
+        )}
+      >
         {favorite ? <span className="mr-[10px]">❤️</span> : null}
         {data.name} - {data.altName}
       </div>
       {data.countryCode ? (
-        <span className="text-nowrap rounded-[23px] border border-neutral-700 px-[9px] py-[5px] text-xs font-bold uppercase text-neutral-400">
+        <span
+          className={clsx(
+            isSelected
+              ? "border-tintLight text-tintLight"
+              : "border-neutral-700 text-neutral-400",
+            "text-nowrap rounded-[23px] border-[1.5px] px-[9px] py-[5px] text-xs font-bold uppercase",
+          )}
+        >
           {country2Flag(data.countryCode)} {data.countryCode}
         </span>
       ) : null}

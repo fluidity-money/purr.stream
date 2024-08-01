@@ -64,15 +64,13 @@ export default function StreamDetail() {
           <LeaderboardButton />
         </div>
       </div>
-      <div className="inline-flex h-[102px] w-[810px] items-center justify-between pl-5">
+      <div className="inline-flex items-center justify-between pl-5">
         {selectedStream.charityDescription ? (
-          <div className="flex shrink grow basis-0 items-center justify-between pr-2.5">
-            <div className="shrink grow basis-0 text-sm font-medium text-neutral-400">
-              {selectedStream.charityDescription}
-            </div>
+          <div className="flex shrink grow basis-0 items-center justify-between pr-2.5 text-sm font-medium text-neutral-400">
+            {selectedStream.charityDescription}
           </div>
         ) : null}
-        <div className="flex h-[102px] items-center justify-between gap-4 rounded-lg bg-[#1E1E1E] px-[25px] py-2.5">
+        <div className="flex items-center justify-between gap-4 rounded-lg bg-[#1E1E1E] px-[25px] py-2.5">
           <div className="inline-flex flex-col items-start justify-center gap-[5px] rounded-[9px] py-3">
             <div className="text-xs font-medium text-neutral-500">
               Total Donated

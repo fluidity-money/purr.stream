@@ -1,4 +1,5 @@
 "use client";
+import { config } from "@/config";
 import { useStreamStore } from "@/stores/streamStore";
 import { streams } from "@/streams";
 import { country2Flag } from "@/utils/country2";
@@ -16,16 +17,24 @@ export default function LeaderItem({
   const selectedStream = useStreamStore((s) => s.selectedStream);
   const handleSelect = () => selectStream(data.hash);
   const isSelected = selectedStream.hash === data.hash;
+  const totalTx = (
+    data.score / config.features.web3.donation.clickUnit
+  ).toFixed(0);
   return (
     <li
       onClick={handleSelect}
       className={clsx(
-        isSelected && "bg-[#1E1E1E]",
+        isSelected && "bg-[#2e2e2e]",
         "flex cursor-pointer items-center justify-between gap-2 border-b border-neutral-700 pb-5 pl-[15px] pr-2 pt-[15px]",
       )}
     >
-      <div className="flex items-center overflow-hidden">
-        <span className="text-sm font-bold text-neutral-100">{rank}.</span>
+      <div
+        className={clsx(
+          isSelected ? "text-tintLight" : "text-neutral-100",
+          "flex items-center overflow-hidden",
+        )}
+      >
+        <span className="text-sm font-bold">{rank}.</span>
         <div className="flex flex-row gap-3 px-[15px]">
           <Image
             className="size-14 rounded-lg object-cover"
@@ -33,7 +42,7 @@ export default function LeaderItem({
             alt="Cat avatar"
           />
           <div className="flex flex-col items-start gap-2">
-            <span className="grow truncate text-base font-bold text-neutral-100">
+            <span className={clsx("grow truncate text-base font-bold")}>
               {data.name} {data.altName}
             </span>
             {data.countryCode ? (
@@ -47,15 +56,13 @@ export default function LeaderItem({
       <div className="flex h-10 items-center gap-6">
         <p className="inline-flex flex-col items-start justify-center gap-0.5">
           <span className="text-xs font-medium text-neutral-400">$SPN</span>
-          <span className="text-base font-bold text-neutral-100">
-            {data.score}
-          </span>
+          <span className="text-base font-bold">{data.score}</span>
         </p>
         <p className="flex flex-col items-start justify-center gap-0.5">
           <span className="whitespace-nowrap text-xs font-medium text-neutral-400">
             Total Tx
           </span>
-          <span className="text-base font-bold text-neutral-100">N/A</span>
+          <span className="text-base font-bold">{totalTx}</span>
         </p>
       </div>
     </li>
