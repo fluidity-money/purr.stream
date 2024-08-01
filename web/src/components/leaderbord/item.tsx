@@ -30,8 +30,6 @@ export default function LeaderItem({
           <Image
             className="size-14 rounded-lg object-cover"
             src={data.image}
-            width={56}
-            height={56}
             alt="Cat avatar"
           />
           <div className="flex flex-col items-start gap-2">
