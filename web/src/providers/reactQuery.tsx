@@ -21,6 +21,22 @@ async function getLeaderboard() {
 
   return results.sort((a, b) => b.score - a.score);
 }
+async function getWalletsCount() {
+  const results = await Promise.all(
+    streams.map(async (stream) => {
+      const wallets =
+        (await readContract({
+          contract: config.contracts.donation.contract,
+          method: config.contracts.donation.abi[5].name,
+          params: [`0x${stream.hash}`],
+        })) ?? "0";
+
+      return { ...stream, wallets: Number(wallets) };
+    }),
+  );
+
+  return results.sort((a, b) => b.wallets - a.wallets);
+}
 
 export default function ReactQueryProvider({
   children,
@@ -33,6 +49,9 @@ export default function ReactQueryProvider({
     // We can set some defaults here
     client.setQueryDefaults(["leaderboard"], {
       queryFn: () => getLeaderboard(),
+    });
+    client.setQueryDefaults(["walletsCount"], {
+      queryFn: () => getWalletsCount(),
     });
     return client;
   });

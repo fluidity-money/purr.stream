@@ -9,6 +9,7 @@ import DonateButton from "@/components/buttons/donateButton";
 import LeaderboardButton from "@/components/buttons/leaderboardButton";
 import { useQuery } from "@tanstack/react-query";
 import { LeaderItemType } from "../leaderbord/item";
+import { config } from "@/config";
 
 export default function StreamDetail() {
   const selectedStream = useStreamStore((state) => state.selectedStream);
@@ -17,6 +18,9 @@ export default function StreamDetail() {
   });
   const donation =
     leaders?.filter((cat) => cat.hash === selectedStream.hash)?.[0]?.score ?? 0;
+  const totalTx = (donation / config.features.web3.donation.clickUnit).toFixed(
+    0,
+  );
   const catIndex =
     leaders?.findIndex((cat) => selectedStream.hash === cat.hash) ?? -1;
   const rank = catIndex === -1 ? "N/A" : catIndex + 1;
@@ -91,7 +95,7 @@ export default function StreamDetail() {
                 💹
               </div>
               <div className="text-right text-xl font-medium text-neutral-100">
-                N/A
+                {totalTx}
               </div>
             </div>
           </div>
