@@ -2,17 +2,16 @@ import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { useState } from "react";
 import { streams } from "@/streams";
 import { readContract } from "thirdweb";
-import { contract } from "./thirdwebClient";
-import { abi } from "#/abis/donation";
 import { toEther } from "thirdweb/utils";
+import { config } from "@/config";
 
 async function getLeaderboard() {
   const results = await Promise.all(
     streams.map(async (stream) => {
       const score =
         (await readContract({
-          contract: contract,
-          method: abi[0].name,
+          contract: config.contracts.donation.contract,
+          method: config.contracts.donation.abi[0].name,
           params: [`0x${stream.hash}`],
         })) ?? BigInt(0);
 

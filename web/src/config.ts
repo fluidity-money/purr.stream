@@ -1,5 +1,6 @@
 import { abi } from "#/abis/donation";
-import { thirdwebClient } from "./providers/thirdwebClient";
+import { createThirdwebClient } from "thirdweb";
+import { getContract } from "thirdweb";
 
 const net = (process.env.NEXT_PUBLIC_NET ?? "testnet") as "mainnet" | "testnet";
 const clientId = process.env.NEXT_PUBLIC_THIRDWEB_ID;
@@ -40,6 +41,16 @@ const metadata = {
     "blockchain",
   ],
 };
+const thirdwebClient = createThirdwebClient({
+  clientId,
+});
+const contract = getContract({
+  client: thirdwebClient,
+  chain: chains.superposition[net],
+  address: contractAddress,
+  abi,
+});
+
 export const config = {
   metadata,
   discord: {
@@ -51,6 +62,7 @@ export const config = {
     donation: {
       address: contractAddress,
       abi,
+      contract,
     },
   },
   features: {

@@ -4,7 +4,6 @@ import { persist } from "zustand/middleware";
 import { Account } from "thirdweb/wallets";
 import toast from "react-hot-toast";
 import { prepareContractCall, sendTransaction, toUnits } from "thirdweb";
-import { contract } from "@/providers/thirdwebClient";
 interface UserStore {
   favs: string[];
   favStream: (streamHash: string) => void;
@@ -121,7 +120,7 @@ export async function handleDonation(id: string, account: Account) {
       .donationQueue.find((item) => item.id === id)!;
 
     const transaction = prepareContractCall({
-      contract,
+      contract: config.contracts.donation.contract,
       method: config.contracts.donation.abi[2].name,
       params: [`0x${hash}`],
       value: toUnits((0.005 * donation).toFixed(3), 18),
