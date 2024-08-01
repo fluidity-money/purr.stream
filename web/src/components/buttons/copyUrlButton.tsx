@@ -1,9 +1,11 @@
 import Image from "next/image";
 import UrlIcon from "#/images/icons/url.svg";
 import { useEffect, useState } from "react";
+import { useStreamStore } from "@/stores/streamStore";
 
 export default function CopyUrlButton() {
   const [isCopied, setIsCopied] = useState(false);
+  const selectedStream = useStreamStore((s) => s.selectedStream);
   useEffect(() => {
     if (isCopied) {
       const timer = setTimeout(() => {
@@ -13,7 +15,8 @@ export default function CopyUrlButton() {
     }
   }, [isCopied]);
   const handleCopyUrl = () => {
-    window.navigator.clipboard.writeText(window.location.href);
+    const params = `?cat=${selectedStream.hash}&camera=${selectedStream.cameraType}`;
+    window.navigator.clipboard.writeText(`${window.location.host}${params}`);
     setIsCopied(true);
   };
   return (

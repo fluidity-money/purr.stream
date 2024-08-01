@@ -11,7 +11,7 @@ interface StreamStore {
     cameraStreamUrl: string;
     cameraType: CameraType;
   };
-  selectStream: (streamHash: string) => void;
+  selectStream: (streamHash: string, cameraType?: CameraType) => void;
   toggleNextCamera: () => void;
 }
 
@@ -23,13 +23,13 @@ export const useStreamStore = create<StreamStore>()(
         cameraStreamUrl: streams[0].front,
         cameraType: streamCameras[0],
       },
-      selectStream: (streamHash: string) => {
+      selectStream: (streamHash, cameraType) => {
         const currItem = streams.find((stream) => stream.hash === streamHash)!;
         set({
           selectedStream: {
             ...currItem,
             cameraStreamUrl: currItem[streamCameras[0]],
-            cameraType: streamCameras[0],
+            cameraType: cameraType ?? streamCameras[0],
           },
         });
       },
