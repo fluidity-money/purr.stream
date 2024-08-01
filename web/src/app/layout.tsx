@@ -7,6 +7,7 @@ import clsx from "clsx";
 import Footer from "@/components/footer";
 import Providers from "@/providers";
 import { Toaster } from "react-hot-toast";
+import { config } from "@/config";
 
 const inter = Inter({ subsets: ["latin"], variable: "--font-inter" });
 const satoshi = localFont({
@@ -26,23 +27,7 @@ const satoshi = localFont({
   variable: "--font-satoshi",
 });
 
-export const metadata: Metadata = {
-  title: "Purr.Stream",
-  description: "Donate onchain and support animal welfare",
-  metadataBase: new URL("https://purr.stream"),
-  keywords: [
-    "cat",
-    "donate",
-    "stream",
-    "purr",
-    "purr.stream",
-    "onchain",
-    "animal",
-    "welfare",
-    "superposition",
-    "blockchain",
-  ],
-};
+export const metadata: Metadata = config.metadata;
 
 export default function RootLayout({
   children,

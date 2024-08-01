@@ -1,5 +1,4 @@
 "use client";
-import { thirdwebClient } from "@/providers/thirdwebClient";
 import { useStreamStore } from "@/stores/streamStore";
 import { useUserStore } from "@/stores/userStore";
 import clsx from "clsx";
@@ -12,6 +11,8 @@ import {
 import { useCoolMode } from "@/hooks/useCoolMode";
 import FavedIcon from "#/images/icons/faved.svg";
 import Loader from "../loader";
+import { config } from "@/config";
+
 export default function DonateButton() {
   const account = useActiveAccount();
   const { connect, isConnecting: isConnectingModal } = useConnectModal();
@@ -30,7 +31,12 @@ export default function DonateButton() {
         setIsClicked(false);
       }, 100);
     } else {
-      connect({ client: thirdwebClient });
+      connect({
+        client: config.thirdweb.client,
+        chain: config.thirdweb.chain,
+        appMetadata: config.thirdweb.appMetadata,
+        accountAbstraction: config.thirdweb.accountAbstraction,
+      });
     }
   };
   const coolRef = useCoolMode(FavedIcon.src, isConnecting || !account);
