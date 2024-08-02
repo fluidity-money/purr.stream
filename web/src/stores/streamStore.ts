@@ -28,7 +28,9 @@ export const useStreamStore = create<StreamStore>()(
         set({
           selectedStream: {
             ...currItem,
-            cameraStreamUrl: currItem[streamCameras[0]],
+            cameraStreamUrl: cameraType
+              ? currItem[cameraType]
+              : currItem[streamCameras[0]],
             cameraType: cameraType ?? streamCameras[0],
           },
         });
