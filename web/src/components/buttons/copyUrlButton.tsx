@@ -20,7 +20,7 @@ export default function CopyUrlButton() {
   const handleCopyUrl = () => {
     startAnimation();
     const params = `?cat=${selectedStream.hash}&camera=${selectedStream.cameraType}`;
-    window.navigator.clipboard.writeText(`${window.location.host}${params}`);
+    window.navigator.clipboard.writeText(`${window.location.origin}/${params}`);
     setIsCopied(true);
   };
   return (
