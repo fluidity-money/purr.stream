@@ -9,19 +9,19 @@ export function getTimeUntilNextFriday() {
   let daysUntilFriday = (5 - currentDay + 7) % 7;
   if (
     daysUntilFriday === 0 &&
-    (currentHour > 20 || (currentHour === 20 && currentMinute >= 0))
+    (currentHour > 7 || (currentHour === 7 && currentMinute >= 0))
   ) {
-    // If today is Friday and it's already past 8 PM GMT+0, set countdown to next week
+    // If today is Friday and it's already past 7 AM GMT+0, set countdown to next week
     daysUntilFriday = 7;
   }
 
-  // Calculate the target time in UTC (Friday 8 PM GMT+0 is 8 PM UTC)
+  // Calculate the target time in UTC (Friday 7 AM GMT+0)
   const targetTime = new Date(
     Date.UTC(
       now.getUTCFullYear(),
       now.getUTCMonth(),
       now.getUTCDate() + daysUntilFriday,
-      20,
+      7,
       0,
       0,
     ),
