@@ -63,3 +63,13 @@ body::-webkit-scrollbar {
 *::-webkit-scrollbar-thumb:hover {
   background-color: #3e3e3e;
 }
+
+/* Change the background color and text color of selected text */
+::selection {
+  background-color: #6e5bdd;
+  color: #f5f5f5;
+}
+::-moz-selection {
+  background-color: #6e5bdd;
+  color: #f5f5f5;
+}
