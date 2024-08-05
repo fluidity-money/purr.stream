@@ -30,8 +30,7 @@ contract Donation is IDonation {
     uint128 donationEpoch_;
 
     /**
-     * @notice positions_ held by the user. The latest element in the array is the
-     *         deposited amounts for the current epoch.
+     * @notice positions_ donated to a cat by each user.
      */
     mapping (address => uint256) private positions_;
 
@@ -58,6 +57,11 @@ contract Donation is IDonation {
     /// @inheritdoc IDonationView
     function get(bytes8 _cat) external view returns (uint256) {
         return cats_[donationEpoch_][_cat];
+    }
+
+    /// @inheritdoc IDonationView
+    function wallet(address _wallet) external view returns (uint256) {
+        return positions_[_wallet];
     }
 
     /// @inheritdoc IDonationView

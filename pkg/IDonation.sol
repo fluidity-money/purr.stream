@@ -11,6 +11,13 @@ interface IDonationView {
     function get(bytes8 cat) external view returns (uint256);
 
     /**
+     * @notice wallet amount donated
+     * @param wallet to get the amount donated for.
+     * @return the amount
+     */
+    function wallet(address wallet) external view returns (uint256);
+
+    /**
      * @notice walletCount that interacted with this cat.
      * @param cat to use.
      * @return amount of wallets that interacted with this cat during the leaderboard window.
