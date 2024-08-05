@@ -20,7 +20,7 @@ export default function Stats() {
   ).toFixed(0);
 
   return (
-    <div className="inline-flex h-[92px] items-center justify-center gap-[70px] rounded-t-lg border-b border-neutral-400 pb-[25px] pl-[30px] pr-[25px] pt-[19px]">
+    <div className="inline-flex h-[92px] items-center justify-between gap-4 rounded-t-lg border-b border-neutral-400 px-4 pb-6 pt-5">
       <div className="flex items-center justify-start gap-2.5">
         <div className="inline-flex flex-col items-start justify-center gap-0.5">
           <div className="whitespace-nowrap text-sm font-medium text-neutral-400">

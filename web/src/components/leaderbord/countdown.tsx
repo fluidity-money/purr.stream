@@ -15,7 +15,7 @@ export default function Countdown() {
   return (
     <div className="flex items-center justify-center rounded-[5px] bg-[#1E1E1E]">
       <p className="block px-2 py-5 text-center text-tintLight">
-        <span className="text-nowrap text-xl font-medium">
+        <span className="text-xl font-medium">
           Weekly Leaderboard Countdown:
         </span>
         <span className="text-nowrap text-xl font-bold">
