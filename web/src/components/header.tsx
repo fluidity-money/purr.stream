@@ -1,11 +1,12 @@
 import Logo from "#/images/logo.svg";
+import LogoIcon from "#/images/logo-icon.svg";
 import Image from "next/image";
 import Link from "next/link";
 import ConnectButton from "@/components/buttons/connectButton";
 import FaucetButton from "./buttons/faucetButton";
 export default function Header() {
   return (
-    <div className="mb-[15px] inline-flex h-[50px] items-center justify-between">
+    <div className="mb-[15px] flex h-8 items-center justify-between px-4 md:h-[50px] md:px-0">
       <Image
         src={Logo}
         alt="purr.stream"
@@ -13,9 +14,18 @@ export default function Header() {
         priority={true}
         height={29}
         data-test="purr-stream-logo"
+        className="hidden md:block"
       />
-      <div className="flex h-[19px] shrink grow basis-0 items-center justify-center gap-1.5">
-        <div className="w-[459px] text-sm font-medium text-neutral-500">
+      <Image
+        src={LogoIcon}
+        alt="purr.stream"
+        priority={true}
+        height={32}
+        data-test="purr-stream-logo-mobile"
+        className="md:hidden"
+      />
+      <div className="hidden h-[19px] shrink grow basis-0 items-center justify-center gap-1.5 md:flex">
+        <div className="text-sm font-medium text-neutral-500">
           Donate your Testnet SPN and support different shelters across the
           world.
         </div>
@@ -28,7 +38,7 @@ export default function Header() {
           </div>
         </Link>
       </div>
-      <div className="flex h-[50px] items-center justify-between gap-2">
+      <div className="flex h-[50px] items-center justify-between gap-1 md:gap-2">
         <FaucetButton />
         <ConnectButton />
       </div>

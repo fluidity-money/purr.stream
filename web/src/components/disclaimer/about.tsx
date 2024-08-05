@@ -1,6 +1,6 @@
 export default function DisclaimerAbout() {
   return (
-    <div className="inline-flex h-[592px] flex-col items-start justify-start gap-7">
+    <div className="inline-flex flex-col items-start justify-start gap-7">
       <div className="text-[25px] font-bold text-[#aeaeae]">
         About purr.stream
       </div>

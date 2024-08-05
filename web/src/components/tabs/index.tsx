@@ -22,7 +22,7 @@ export default function TabNavigation() {
         onChange={changeTab}
         className={"flex flex-1 flex-col"}
       >
-        <TabList className={"my-[25px] flex w-full gap-2"}>
+        <TabList className="my-0 mb-4 flex w-full gap-2 overflow-x-scroll md:my-[25px] md:mb-0 md:overflow-auto">
           <TabButton title="All Streams" emoji="😺" />
           <TabButton title="Your Favorites" emoji="❤️" />
           <TabButton title="See Leaderboard" emoji="🏆" />
@@ -50,7 +50,7 @@ function ScrollMore({ styles }: { styles: string }) {
     <div
       className={clsx(
         styles,
-        "absolute inset-x-2 bottom-2 z-10 flex items-center",
+        "absolute inset-x-2 bottom-2 z-10 hidden items-center md:flex",
       )}
     >
       <div className="mx-auto flex h-[19px] items-center justify-center gap-[13px] rounded-lg bg-black/50 p-4">
@@ -79,7 +79,7 @@ function TabPage({
       <div className="relative flex grow">
         <ScrollMore styles={animationStyles} />
         <div
-          className="absolute inset-0 overflow-y-scroll"
+          className="inset-0 md:absolute md:overflow-y-scroll"
           onMouseEnter={startAnimation}
         >
           {body}

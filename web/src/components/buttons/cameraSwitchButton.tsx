@@ -2,7 +2,9 @@ import { useStreamStore } from "@/stores/streamStore";
 import clsx from "clsx";
 import Image from "next/image";
 import CameraIcon from "#/images/icons/camera.svg";
+import CameraIconWhite from "#/images/icons/camera-white.svg";
 import useClickAnimation from "@/hooks/useClickAnimation";
+import ThemedButton from "./themedButton";
 
 export default function CameraSwithButton() {
   const toggleNextCamera = useStreamStore((state) => state.toggleNextCamera);
@@ -15,16 +17,22 @@ export default function CameraSwithButton() {
   };
 
   return (
-    <div
-      onClick={handleToggleNext}
-      className="group flex h-[39px] cursor-pointer items-center justify-center gap-1 rounded-[10px] border-2 border-stone-950 bg-neutral-100 py-2.5 pl-[13px] pr-2.5 shadow"
-    >
+    <ThemedButton handler={handleToggleNext}>
       <div className={clsx(animationStyles, "relative flex items-center")}>
-        <Image src={CameraIcon} alt="Change camera angle" />
+        <Image
+          className="hidden md:block"
+          src={CameraIcon}
+          alt="Change camera angle"
+        />
+        <Image
+          className="md:hidden"
+          src={CameraIconWhite}
+          alt="Change camera angle"
+        />
       </div>
-      <div className="text-sm font-bold capitalize text-black">
+      <div className="text-sm font-bold capitalize text-white md:text-black">
         {selectedStream.cameraType}
       </div>
-    </div>
+    </ThemedButton>
   );
 }

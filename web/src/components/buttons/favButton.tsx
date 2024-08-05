@@ -1,11 +1,16 @@
 import Image from "next/image";
 import FavIcon from "#/images/icons/fav.svg";
+import FavIconWhite from "#/images/icons/fav-white.svg";
 import FavedIcon from "#/images/icons/faved.svg";
+import FavedIconWhite from "#/images/icons/faved-white.svg";
 import { useUserStore } from "@/stores/userStore";
 import useClickAnimation from "@/hooks/useClickAnimation";
 import clsx from "clsx";
+import ThemedButton from "./themedButton";
+import { useStreamStore } from "@/stores/streamStore";
 
-export default function FavButton({ hash }: { hash: string }) {
+export default function FavButton() {
+  const { hash } = useStreamStore((s) => s.selectedStream);
   const isStreamFaved = useUserStore((s) => s.favs).includes(hash);
   const favStream = useUserStore((s) => s.favStream);
   const unfavStream = useUserStore((s) => s.unfavStream);
@@ -16,10 +21,7 @@ export default function FavButton({ hash }: { hash: string }) {
   };
 
   return (
-    <div
-      onClick={handleFav}
-      className="group flex h-[39px] cursor-pointer items-center justify-center gap-1 rounded-[10px] border-2 border-stone-950 bg-neutral-100 px-3 py-2.5 shadow"
-    >
+    <ThemedButton handler={handleFav}>
       <div
         className={clsx(
           animationStyles,
@@ -31,8 +33,16 @@ export default function FavButton({ hash }: { hash: string }) {
           alt="Favorite"
           width={19}
           height={17}
+          className="hidden md:block"
+        />
+        <Image
+          src={isStreamFaved ? FavedIconWhite : FavIconWhite}
+          alt="Favorite"
+          width={19}
+          height={17}
+          className="md:hidden"
         />
       </div>
-    </div>
+    </ThemedButton>
   );
 }

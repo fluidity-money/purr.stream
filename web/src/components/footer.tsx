@@ -6,6 +6,7 @@ import { useState } from "react";
 import Script from "next/script";
 import { config } from "@/config";
 import { DisclaimerIndexes } from "@/components/disclaimer";
+import clsx from "clsx";
 interface CrateConfig {
   server: string;
   channel: string;
@@ -15,13 +16,18 @@ interface CrateConfig {
 declare class Crate {
   constructor(config: CrateConfig);
 }
-export default function Footer() {
+export default function Footer({ extraStyles }: { extraStyles?: string }) {
   const [isDisclaimerOpen, setIsDisclaimerOpen] = useState(false);
   const [disclaimerIndex, setDisclaimerIndex] = useState<DisclaimerIndexes>(0);
 
   return (
-    <div className="relative mt-[15px] flex h-[59px] w-full max-w-screen-2xl items-center justify-between">
-      <div className="flex h-[31px] items-center justify-between gap-4">
+    <div
+      className={clsx(
+        extraStyles,
+        "relative flex w-full max-w-screen-2xl px-4 md:mt-[15px] md:h-[59px]",
+      )}
+    >
+      <div className="flex h-[31px] flex-1 items-center justify-between gap-4 md:justify-start">
         <div
           className="flex cursor-pointer items-center justify-start gap-1 rounded-[23px] py-1.5"
           onClick={() => {

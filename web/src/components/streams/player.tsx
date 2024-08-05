@@ -3,11 +3,10 @@
 import { useStreamStore } from "@/stores/streamStore";
 import { useEffect, useRef } from "react";
 import Hls from "hls.js";
-import CameraSwithButton from "@/components/buttons/cameraSwitchButton";
-import FavButton from "@/components/buttons/favButton";
+
 import Bowser from "bowser";
 import clsx from "clsx";
-import CopyUrlButton from "../buttons/copyUrlButton";
+import StreamControls from "./controls";
 
 export default function StreamPlayer() {
   const selectedStream = useStreamStore((state) => state.selectedStream);
@@ -54,10 +53,8 @@ export default function StreamPlayer() {
       <p className={clsx("absolute inset-0 z-[1]", placeholderStyle)}>
         Turning on the cat camera...
       </p>
-      <div className="absolute bottom-2 left-2 z-[3] flex gap-1">
-        <CameraSwithButton />
-        <FavButton hash={selectedStream.hash} />
-        <CopyUrlButton />
+      <div className="absolute bottom-2 left-2 z-[3] hidden md:flex">
+        <StreamControls />
       </div>
     </>
   ) : (

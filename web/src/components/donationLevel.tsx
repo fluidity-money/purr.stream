@@ -23,7 +23,7 @@ export default function DonationLevel() {
   }, [curr?.id, account]);
 
   return (
-    <div className="fixed bottom-4 right-4">
+    <div className="fixed bottom-1 right-1 md:bottom-4 md:right-4">
       {donationQueue.length > 0 ? (
         <ul className="flex flex-col items-center justify-center gap-2">
           {donationQueue.map((item) => (

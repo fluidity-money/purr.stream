@@ -3,14 +3,16 @@ import { create } from "zustand";
 import { persist } from "zustand/middleware";
 
 type CameraType = (typeof streamCameras)[number];
+export type SelectedStrem = Omit<
+  (typeof streams)[number],
+  "front" | "above" | "behind"
+> & {
+  cameraStreamUrl: string;
+  cameraType: CameraType;
+};
+
 interface StreamStore {
-  selectedStream: Omit<
-    (typeof streams)[number],
-    "front" | "above" | "behind"
-  > & {
-    cameraStreamUrl: string;
-    cameraType: CameraType;
-  };
+  selectedStream: SelectedStrem;
   selectStream: (streamHash: string, cameraType?: CameraType) => void;
   toggleNextCamera: () => void;
 }

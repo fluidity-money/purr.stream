@@ -58,10 +58,12 @@ export default function RootLayout({
         <div className="flex w-full max-w-screen-2xl grow flex-col">
           <Providers>
             <Header />
-            <main className="my-[15px] flex grow flex-col">{children}</main>
+            <main className="mb-[15px] flex grow flex-col px-4 md:my-[15px] md:mb-0 md:px-0">
+              {children}
+            </main>
           </Providers>
         </div>
-        <Footer />
+        <Footer extraStyles="md:flex hidden" />
       </body>
     </html>
   );

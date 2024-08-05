@@ -1,7 +1,7 @@
 export const codeToNameDic = {
   au: "Australia",
   jp: "Japan",
-  us: "United States of America",
+  us: "USA",
   br: "Brazil",
   id: "Indonesia",
   cn: "China",

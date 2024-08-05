@@ -6,7 +6,7 @@ export default function useClickAnimation(delay: number = 200) {
   const animationStyles = clsx(
     isClicked
       ? "hover:scale-90 group-hover:scale-75"
-      : "hover:scale-110 group-hover:scale-110",
+      : "md:hover:scale-110 md:group-hover:scale-110",
     "transition-transform duration-300",
   );
 

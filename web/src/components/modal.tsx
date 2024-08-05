@@ -44,7 +44,7 @@ export default function Modal({
               leaveFrom="opacity-100 transform-[scale(100%)]"
               leaveTo="opacity-0 transform-[scale(95%)]"
             >
-              <DialogPanel className="w-full max-w-3xl overflow-hidden rounded-xl border border-neutral-400 bg-stone-900 px-20 py-[60px] shadow-2xl backdrop-blur-xl">
+              <DialogPanel className="w-full max-w-3xl overflow-hidden rounded-xl border border-neutral-400 bg-stone-900 p-4 shadow-2xl backdrop-blur-xl md:p-0 md:px-20 md:py-[60px]">
                 <div className="flex items-end justify-end">
                   <div onClick={closeModal} className="size-10 cursor-pointer">
                     <Image

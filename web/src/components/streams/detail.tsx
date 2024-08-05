@@ -1,8 +1,6 @@
 "use client";
 
 import { useStreamStore } from "@/stores/streamStore";
-import { country2Flag, country2Name, CountryCode } from "../../utils/country2";
-import Link from "next/link";
 import Image from "next/image";
 import SPNIcon from "#/images/icons/spn.svg";
 import DonateButton from "@/components/buttons/donateButton";
@@ -10,7 +8,9 @@ import LeaderboardButton from "@/components/buttons/leaderboardButton";
 import { useQuery } from "@tanstack/react-query";
 import { LeaderItemType } from "../leaderbord/item";
 import { config } from "@/config";
-
+import Title from "./title";
+import StreamControls from "./controls";
+import Footer from "../footer";
 export default function StreamDetail() {
   const selectedStream = useStreamStore((state) => state.selectedStream);
   const { data: leaders } = useQuery<LeaderItemType[]>({
@@ -25,52 +25,28 @@ export default function StreamDetail() {
     leaders?.findIndex((cat) => selectedStream.hash === cat.hash) ?? -1;
   const rank = catIndex === -1 ? "N/A" : catIndex + 1;
   return (
-    <div className="mt-[30px] flex flex-col gap-[30px]" data-test="stream-info">
-      <div className="flex items-start justify-between pl-5">
-        <div className="shrink grow basis-0 flex-col items-start justify-center gap-[5px]">
-          <div className="flex flex-col gap-2.5">
-            <div className="text-left text-[25px] font-bold text-white">
-              {selectedStream.name} - ({selectedStream.altName})
-            </div>
-            <div className="flex items-center justify-start gap-6">
-              {selectedStream.countryCode ? (
-                <Link href={selectedStream.charityUrl} target="_blank">
-                  <p className="flex items-center justify-start gap-2 text-nowrap rounded-[23px] border border-neutral-400 px-3 py-[5px]">
-                    <span className="text-base font-medium text-neutral-400">
-                      {country2Flag(selectedStream.countryCode)}
-                    </span>
-                    <span className="text-xs font-bold text-neutral-100">
-                      {country2Name(selectedStream.countryCode as CountryCode)}
-                    </span>{" "}
-                    <span className="text-xs font-bold text-neutral-400">
-                      - {selectedStream.charity}
-                    </span>
-                  </p>
-                </Link>
-              ) : null}
-              <div className="flex h-[19px] items-center justify-start gap-2 rounded-[23px]">
-                <div className="text-sm font-medium text-neutral-400">
-                  Local Time:
-                </div>
-                <div className="text-sm font-medium text-neutral-400">
-                  16:02:00 ETC
-                </div>
-              </div>
-            </div>
-          </div>
+    <div
+      className="mt-4 flex flex-col gap-4 md:mt-[30px] md:gap-[30px]"
+      data-test="stream-info"
+    >
+      <div className="flex flex-col justify-between md:flex-row md:items-start md:pl-5">
+        <Title extraStyles="hidden md:flex" />
+        <div className="relative mb-[7px] md:mb-0 md:hidden">
+          <StreamControls />
         </div>
-        <div className="flex h-[69px] items-center justify-center gap-[19px]">
+        <div className="flex h-[69px] items-center justify-center gap-2 md:gap-[19px]">
           <DonateButton />
           <LeaderboardButton />
         </div>
       </div>
-      <div className="inline-flex items-center justify-between pl-5">
+      <div className="inline-flex items-center justify-between md:pl-5">
         {selectedStream.charityDescription ? (
-          <div className="flex shrink grow basis-0 items-center justify-between pr-2.5 text-sm font-medium text-neutral-400">
+          <div className="hidden shrink grow basis-0 items-center justify-between pr-2.5 text-sm font-medium text-neutral-400 md:flex">
             {selectedStream.charityDescription}
           </div>
         ) : null}
-        <div className="flex items-center justify-between gap-4 rounded-lg bg-[#1E1E1E] px-[25px] py-2.5">
+
+        <div className="flex flex-1 items-center justify-between gap-4 rounded-lg bg-[#1E1E1E] px-[25px] py-2.5 md:flex-initial">
           <div className="inline-flex flex-col items-start justify-center gap-[5px] rounded-[9px] py-3">
             <div className="text-xs font-medium text-neutral-500">
               Total Donated
@@ -110,6 +86,7 @@ export default function StreamDetail() {
           </div>
         </div>
       </div>
+      <Footer extraStyles="md:hidden" />
     </div>
   );
 }

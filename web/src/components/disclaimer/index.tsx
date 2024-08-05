@@ -19,7 +19,7 @@ export default function Disclaimer({
   } as { [key: DisclaimerIndexes]: React.ReactNode };
 
   return (
-    <div className="inline-flex h-[570px] w-[628px] items-start justify-start gap-[38px] rounded-2xl">
+    <div className="inline-flex w-auto items-start justify-start gap-4 rounded-2xl md:h-[570px] md:w-[628px] md:gap-[38px]">
       <DisclaimerMenu index={index} setIndex={setIndex} />
       <div className="h-full overflow-y-scroll" key={index}>
         {sections[index]}
