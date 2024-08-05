@@ -23,14 +23,14 @@ export default function DonationLevel() {
   }, [curr?.id, account]);
 
   return (
-    <div className="fixed bottom-1 right-1 md:bottom-4 md:right-4">
+    <div className="fixed bottom-[2px] right-[2px] md:bottom-4 md:right-4">
       {donationQueue.length > 0 ? (
         <ul className="flex flex-col items-center justify-center gap-2">
           {donationQueue.map((item) => (
             <li
               key={item.id}
               className={clsx(
-                "relative flex size-20 flex-col items-center justify-center gap-1 rounded-full text-xl",
+                "relative flex size-16 flex-col items-center justify-center gap-1 rounded-full text-base md:size-20 md:text-xl",
               )}
             >
               {item.status === "loading" ? <Loader /> : null}
@@ -59,8 +59,10 @@ export default function DonationLevel() {
           ))}
         </ul>
       ) : null}
-      <div className="flex flex-col gap-1 rounded-lg bg-[#1E1E1E] px-4 py-2 text-center text-2xl font-extralight">
-        <span className="text-sm font-bold text-neutral-500">Donation</span>
+      <div className="flex flex-col gap-1 rounded-lg bg-[#1E1E1E] px-4 py-2 text-center text-lg font-extralight md:text-2xl">
+        <span className="text-xs font-bold text-neutral-500 md:text-sm">
+          Donation
+        </span>
         {totalDonation.toFixed(3)}
       </div>
     </div>
