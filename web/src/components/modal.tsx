@@ -31,10 +31,10 @@ export default function Modal({
     <Transition appear show={isOpen}>
       <Dialog
         as="div"
-        className="relative z-10 focus:outline-none"
+        className="relative z-30 focus:outline-none"
         onClose={closeModal}
       >
-        <div className="fixed inset-0 z-10 w-screen overflow-y-auto bg-black/50 backdrop-blur-sm">
+        <div className="fixed inset-0 z-30 w-screen overflow-y-auto bg-black/50 backdrop-blur-sm">
           <div className="flex min-h-full items-center justify-center">
             <TransitionChild
               enter="ease-out duration-300"
