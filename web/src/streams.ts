@@ -411,6 +411,6 @@ export const streams = [
     image: Cat24,
     hash: "90ed20da04a1229d",
   },
-] as const;
+];
 
 export const streamCameras = ["front", "above", "behind"] as const;
