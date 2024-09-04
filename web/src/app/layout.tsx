@@ -8,6 +8,7 @@ import Footer from "@/components/footer";
 import Providers from "@/providers";
 import { Toaster } from "react-hot-toast";
 import { config } from "@/config";
+import GoogleAnalytics from "@/components/googleAnalytics";
 
 const inter = Inter({ subsets: ["latin"], variable: "--font-inter" });
 const satoshi = localFont({
@@ -65,6 +66,7 @@ export default function RootLayout({
         </div>
         <Footer extraStyles="md:flex hidden" />
       </body>
+      <GoogleAnalytics />
     </html>
   );
 }
