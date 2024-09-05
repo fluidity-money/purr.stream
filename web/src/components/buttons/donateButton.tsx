@@ -28,6 +28,15 @@ export default function DonateButton() {
     if (account) {
       startAnimation();
       incrementDonationClicks(selectedStream.hash);
+      window.gtag("event", "button_click", {
+        event_category: "donation",
+        event_label: "cat_donation",
+        value: config.features.web3.donation.clickUnit,
+        wallet_address: account.address,
+        cat_hash: selectedStream.hash,
+        cat_name: selectedStream.name,
+        cat_country: selectedStream.countryCode,
+      });
     } else {
       connect({
         client: config.thirdweb.client,

@@ -4,6 +4,7 @@ import { persist } from "zustand/middleware";
 import { Account } from "thirdweb/wallets";
 import toast from "react-hot-toast";
 import { prepareContractCall, sendTransaction, toUnits } from "thirdweb";
+import { streams } from "@/streams";
 interface UserStore {
   favs: string[];
   favStream: (streamHash: string) => void;
@@ -114,22 +115,42 @@ function removeDonation(id: string) {
   }));
 }
 export async function handleDonation(id: string, account: Account) {
+  const { hash, donation } = useUserStore
+    .getState()
+    .donationQueue.find((item) => item.id === id)!;
   try {
-    const { hash, donation } = useUserStore
-      .getState()
-      .donationQueue.find((item) => item.id === id)!;
-
     const transaction = prepareContractCall({
       contract: config.contracts.donation.contract,
       method: config.contracts.donation.abi[2].name,
       params: [`0x${hash}`],
-      value: toUnits((0.005 * donation).toFixed(3), 18),
+      value: toUnits(
+        (config.features.web3.donation.clickUnit * donation).toFixed(3),
+        18,
+      ),
     });
 
     await sendTransaction({ transaction, account });
+    window.gtag("event", "bg-action", {
+      event_category: "donation",
+      event_label: "cat_donation_completed",
+      value: config.features.web3.donation.clickUnit * donation,
+      wallet_address: account.address,
+      cat_hash: hash,
+      cat_name: streams.find((item) => item.hash === hash)!.name,
+      cat_country: streams.find((item) => item.hash === hash)!.countryCode,
+    });
     updateDonationStatus(id, "success");
   } catch (e) {
     updateDonationStatus(id, "error", e);
+    window.gtag("event", "bg-action", {
+      event_category: "donation",
+      event_label: "cat_donation_failed",
+      value: config.features.web3.donation.clickUnit * donation,
+      wallet_address: account.address,
+      cat_hash: hash,
+      cat_name: streams.find((item) => item.hash === hash)!.name,
+      cat_country: streams.find((item) => item.hash === hash)!.countryCode,
+    });
   } finally {
     await new Promise((res) => setTimeout(res, 2000));
     removeDonation(id);
