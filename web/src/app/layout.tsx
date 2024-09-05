@@ -9,7 +9,11 @@ import Providers from "@/providers";
 import { Toaster } from "react-hot-toast";
 import { config } from "@/config";
 import GoogleAnalytics from "@/components/googleAnalytics";
+import dynamic from "next/dynamic";
 
+const CookieBanner = dynamic(() => import("@/components/cookieBanner"), {
+  ssr: false,
+});
 const inter = Inter({ subsets: ["latin"], variable: "--font-inter" });
 const satoshi = localFont({
   src: [
@@ -65,6 +69,7 @@ export default function RootLayout({
           </Providers>
         </div>
         <Footer extraStyles="md:flex hidden" />
+        <CookieBanner />
       </body>
       <GoogleAnalytics />
     </html>
