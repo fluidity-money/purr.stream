@@ -5,6 +5,7 @@ import { Account } from "thirdweb/wallets";
 import toast from "react-hot-toast";
 import { prepareContractCall, sendTransaction, toUnits } from "thirdweb";
 import { streams } from "@/streams";
+import { sendGTMEvent } from "@next/third-parties/google";
 interface UserStore {
   favs: string[];
   favStream: (streamHash: string) => void;
@@ -130,7 +131,7 @@ export async function handleDonation(id: string, account: Account) {
     });
 
     await sendTransaction({ transaction, account });
-    window.gtag("event", "bg-action", {
+    sendGTMEvent({
       event_category: "donation",
       event_label: "cat_donation_completed",
       value: config.features.web3.donation.clickUnit * donation,
@@ -142,7 +143,7 @@ export async function handleDonation(id: string, account: Account) {
     updateDonationStatus(id, "success");
   } catch (e) {
     updateDonationStatus(id, "error", e);
-    window.gtag("event", "bg-action", {
+    sendGTMEvent({
       event_category: "donation",
       event_label: "cat_donation_failed",
       value: config.features.web3.donation.clickUnit * donation,

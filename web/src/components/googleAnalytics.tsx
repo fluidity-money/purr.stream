@@ -1,6 +1,8 @@
 "use client";
 import Script from "next/script";
 import { GoogleTagManager } from "@next/third-parties/google";
+import { useActiveAccount } from "thirdweb/react";
+import { useEffect } from "react";
 
 export const grantedConsent = {
   ad_storage: "granted",
@@ -20,6 +22,15 @@ export const deniedConsent = {
 
 export default function GoogleAnalytics() {
   const gtmId = "GTM-KWBPC355";
+  const account = useActiveAccount();
+
+  useEffect(() => {
+    if (account?.address) {
+      window.localStorage.setItem("walletAddress", account.address);
+    } else {
+      window.localStorage.removeItem("walletAddress");
+    }
+  }, [account?.address]);
 
   return (
     <>
@@ -36,7 +47,7 @@ export default function GoogleAnalytics() {
 
                 if (localStorage.getItem('userId') != null) {
                   window.dataLayer.push({
-                    'user_id': localStorage.getItem('userId')
+                    'walletAddress': localStorage.getItem('walletAddress')
                 });
         }
                 `}

@@ -13,6 +13,7 @@ import FavedIcon from "#/images/icons/faved.svg";
 import Loader from "../loader";
 import { config } from "@/config";
 import useClickAnimation from "@/hooks/useClickAnimation";
+import { sendGTMEvent } from "@next/third-parties/google";
 
 export default function DonateButton() {
   const account = useActiveAccount();
@@ -28,7 +29,7 @@ export default function DonateButton() {
     if (account) {
       startAnimation();
       incrementDonationClicks(selectedStream.hash);
-      window.gtag("event", "button_click", {
+      sendGTMEvent({
         event_category: "donation",
         event_label: "cat_donation",
         value: config.features.web3.donation.clickUnit,
