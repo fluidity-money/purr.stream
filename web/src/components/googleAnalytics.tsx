@@ -29,7 +29,7 @@ export default function GoogleAnalytics() {
                 function gtag(){dataLayer.push(arguments);}
 
                 if (localStorage.getItem('consentMode') === null) {
-                  gtag('consent', 'default', ${deniedConsent});
+                  gtag('consent', 'default', ${JSON.stringify(deniedConsent)});
                 } else {
                     gtag('consent', 'default', JSON.parse(localStorage.getItem('consentMode')));
                 }
