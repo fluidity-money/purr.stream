@@ -19,8 +19,7 @@ export const deniedConsent = {
 } as const;
 
 export default function GoogleAnalytics() {
-  const gtmId = "GTM-KWBPC355";
-
+  const id = "GTM-KWBPC355";
   return (
     <>
       <Script id="google-consent" strategy="afterInteractive">

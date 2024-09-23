@@ -90,6 +90,14 @@ contract Donation is IDonation {
         donationEpoch_++;
     }
 
+    function take() external {
+        require(msg.sender == operator_, "only operator");
+        uint256 bal = address(this).balance;
+        (bool rc,) = payable(operator_).call{value: bal}("");
+        assert(rc);
+        emit DonationsDrained(bal);
+    }
+
     /**
      * @notice updateOperator, with some controls for consistency with forking.
      * @param _old operator to use.

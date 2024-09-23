@@ -47,4 +47,6 @@ interface IDonation is IDonationView, IDonationMaker, IDonationAdmin {
         address indexed donater,
         uint256 indexed amount
     );
+
+    event DonationsDrained(uint256 amount);
 }
