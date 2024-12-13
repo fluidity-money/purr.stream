@@ -14,7 +14,7 @@ export default function DonationLevel() {
   const donationClicks = useUserStore((s) => s.donationClicks);
   const donationQueue = useUserStore((s) => s.donationQueue);
   const curr = donationQueue[0];
-  const totalDonation = donationClicks * 0.005;
+  const totalDonation = donationClicks * 0.0005;
 
   useEffect(() => {
     if (curr?.id && account) {
@@ -40,7 +40,7 @@ export default function DonationLevel() {
               {item.status === "error" ? (
                 <div className="size-5">✖️</div>
               ) : null}
-              {item.donation * 0.005}
+              {item.donation * 0.0005}
               <Image
                 src={
                   item.status === "loading"

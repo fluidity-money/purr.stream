@@ -3,7 +3,6 @@ import LogoIcon from "#/images/logo-icon.svg";
 import Image from "next/image";
 import Link from "next/link";
 import ConnectButton from "@/components/buttons/connectButton";
-import FaucetButton from "./buttons/faucetButton";
 export default function Header() {
   return (
     <div className="mb-[15px] flex h-8 items-center justify-between px-4 md:h-[50px] md:px-0">
@@ -38,7 +37,6 @@ export default function Header() {
         </Link>
       </div>
       <div className="flex h-[50px] items-center justify-between gap-1 md:gap-2">
-        <FaucetButton />
         <ConnectButton />
       </div>
     </div>

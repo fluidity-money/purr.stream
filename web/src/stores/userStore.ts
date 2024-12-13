@@ -78,7 +78,7 @@ function handleErrorMessage(error: unknown) {
     const errorMessage = (error as { message: string }).message;
 
     if (errorMessage.includes("insufficient funds")) {
-      return "Insufficient funds, go to faucet";
+      return "Insufficient funds, add ETH";
     } else if (errorMessage) {
       return errorMessage;
     } else {
