@@ -9,9 +9,9 @@ export default function DisclaimerHow() {
           <div className="flex flex-col items-start justify-start gap-2">
             <div className="">
               <span className="text-xs font-bold leading-[18px] text-[#aeaeae]">
-                Login and connect you crypto wallet to donate your ETH
-                to your favourite cat stream! Each stream corresponds to a
-                specific country and an animal welfare organisation :3 <br />
+                Login and connect you crypto wallet to donate your ETH to your
+                favourite cat stream! Each stream corresponds to a specific
+                country and an animal welfare organisation :3 <br />
                 If you&apos;re new to the Web3 space, here is a tutorial!
                 <br />
                 <br />
