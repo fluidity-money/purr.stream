@@ -7,6 +7,7 @@ import {
     IDonationAdmin,
     IDonationView} from "./IDonation.sol";
 
+// Donation contract to receive ETH donations to send to charities.
 contract Donation is IDonation {
     uint256 constant private MIN_DONATION = 0;
 
