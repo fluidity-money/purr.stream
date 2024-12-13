@@ -44,7 +44,6 @@ export default function DonateButton() {
         chain: config.thirdweb.chain,
         wallets: config.thirdweb.wallets,
         appMetadata: config.thirdweb.appMetadata,
-        accountAbstraction: config.thirdweb.accountAbstraction,
       });
     }
   };

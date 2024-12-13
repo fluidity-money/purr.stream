@@ -9,7 +9,6 @@ export default function ConnectButton() {
       chain={config.thirdweb.chain}
       wallets={config.thirdweb.wallets}
       appMetadata={config.thirdweb.appMetadata}
-      accountAbstraction={config.thirdweb.accountAbstraction}
     />
   );
 }

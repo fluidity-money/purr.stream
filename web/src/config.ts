@@ -90,10 +90,6 @@ export const config = {
     clientId,
     client: thirdwebClient,
     chain: chains.superposition[net],
-    accountAbstraction: {
-      chain: chains.superposition[net],
-      sponsorGas: true,
-    },
     wallets,
     appMetadata: {
       name: metadata.title as string,
