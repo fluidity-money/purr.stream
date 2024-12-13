@@ -1,6 +1,10 @@
 
 # Purr Stream [![codecov](https://codecov.io/gh/fluidity-money/purr.stream/graph/badge.svg?token=P1AESWS7OT)](https://codecov.io/gh/fluidity-money/purr.stream)
 
+Purr.Stream is a donation webapp where donated ETH is given to animal shelters around the
+world with a leaderboard system. The administrator of the contract takes the amounts that
+were donated for regular donation.
+
 ## Deployment details
 
 ### Superposition mainnet

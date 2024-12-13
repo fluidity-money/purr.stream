@@ -24,7 +24,7 @@ export default function Stats() {
       <div className="flex items-center justify-start gap-2.5">
         <div className="inline-flex flex-col items-start justify-center gap-0.5">
           <div className="whitespace-nowrap text-sm font-medium text-neutral-400">
-            Total $SPN
+            Total $ETH
           </div>
           <div className="text-xl font-bold text-neutral-100">
             {totalDonation}

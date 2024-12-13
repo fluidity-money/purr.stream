@@ -9,7 +9,7 @@ export default function DisclaimerHow() {
           <div className="flex flex-col items-start justify-start gap-2">
             <div className="">
               <span className="text-xs font-bold leading-[18px] text-[#aeaeae]">
-                Login and connect you crypto wallet to donate your testnet SPN
+                Login and connect you crypto wallet to donate your ETH
                 to your favourite cat stream! Each stream corresponds to a
                 specific country and an animal welfare organisation :3 <br />
                 If you&apos;re new to the Web3 space, here is a tutorial!
@@ -40,22 +40,6 @@ export default function DisclaimerHow() {
                 <br />{" "}
               </span>
               <br />
-              <span className="text-xs font-bold leading-[18px] text-[#aeaeae]">
-                Get SPN Tokens:
-                <br />
-              </span>
-              <span className="text-xs font-medium leading-[18px] text-[#aeaeae]">
-                {" "}
-                • Click on the faucet button to gain SPN tokens for donations.
-                <br /> • For detailed instructions on using the Superposition
-                faucet, visit{" "}
-              </span>
-              <span className="text-xs font-medium leading-[18px] text-[#aeaeae] underline">
-                Superposition Faucet Guide
-              </span>
-              <span className="text-xs font-medium leading-[18px] text-[#aeaeae]">
-                .<br />
-              </span>
             </div>
           </div>
           <div className="flex flex-col items-start justify-start gap-2">
@@ -70,7 +54,7 @@ export default function DisclaimerHow() {
               <span className="text-xs font-medium leading-[18px] text-[#aeaeae]">
                 {" "}
                 • Go to your chosen cat stream.
-                <br /> • Spam the donate button to contribute SPN tokens.
+                <br /> • Spam the donate button to contribute ETH tokens.
                 <br />
                 <br />
               </span>
@@ -80,7 +64,7 @@ export default function DisclaimerHow() {
               </span>
               <span className="text-xs font-medium leading-[18px] text-[#aeaeae]">
                 {" "}
-                • The more you click donate & engage, the more SPN will be
+                • The more you click donate & engage, the more ETH will be
                 donated to your favourite cat.
                 <br />{" "}
               </span>

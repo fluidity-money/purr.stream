@@ -2,7 +2,7 @@
 
 import { useStreamStore } from "@/stores/streamStore";
 import Image from "next/image";
-import SPNIcon from "#/images/icons/spn.svg";
+import ETHIcon from "#/images/icons/eth.svg";
 import DonateButton from "@/components/buttons/donateButton";
 import LeaderboardButton from "@/components/buttons/leaderboardButton";
 import { useQuery } from "@tanstack/react-query";
@@ -53,7 +53,7 @@ export default function StreamDetail() {
             </div>
             <div className="inline-flex items-center justify-start gap-2.5">
               <div className="relative h-5 w-[21px] rounded-[41px]">
-                <Image src={SPNIcon} width={21} height={21} alt="SPN" />
+                <Image src={ETHIcon} width={21} height={21} alt="ETH" />
               </div>
               <div className="text-xl font-medium text-neutral-100">
                 {donation}

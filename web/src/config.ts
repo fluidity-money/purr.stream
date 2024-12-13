@@ -17,9 +17,9 @@ const chains = {
       rpc: "https://testnet-rpc.superposition.so",
     },
     mainnet: {
-      name: "Superposition Mainnet",
-      id: 98985,
-      nativeCurrency: { name: "Superposition", symbol: "SPN", decimals: 18 },
+      name: "Superposition",
+      id: 55244,
+      nativeCurrency: { name: "Ethereum", symbol: "ETH", decimals: 18 },
       rpc: "https://rpc.superposition.so",
     },
   },

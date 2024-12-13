@@ -26,7 +26,7 @@ export default function Header() {
       />
       <div className="hidden h-[19px] shrink grow basis-0 items-center justify-center gap-1.5 md:flex">
         <div className="text-sm font-medium text-neutral-500">
-          Donate your Testnet SPN and support different shelters across the
+          Donate your ETH and support different shelters across the
           world.
         </div>
         <Link href={"#"} className="flex items-center justify-start gap-0.5">

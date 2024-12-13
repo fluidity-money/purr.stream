@@ -25,10 +25,9 @@ export default function DisclaimerAbout() {
               Superposition chain
             </span>
             <span className="text-xs font-medium leading-[18px] text-[#aeaeae]">
-              , users can connect their crypto wallets, donate SPN testnet
-              tokens to specific cat streams and their corresponding
-              country&apos;s organisation, participate in a weekly leaderboard,
-              and engage in Discord chats based on donations.
+	      , users can connect their crypto wallets, donate ETH tokens to specific cat
+	      streams and their corresponding country&apos;s organisation, participate in
+	      a weekly leaderboard, and engage in Discord chats based on donations.
             </span>
           </p>
         </div>
