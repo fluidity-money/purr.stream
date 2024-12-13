@@ -42,6 +42,7 @@ export default function DonateButton() {
       connect({
         client: config.thirdweb.client,
         chain: config.thirdweb.chain,
+        wallets: config.thirdweb.wallets,
         appMetadata: config.thirdweb.appMetadata,
         accountAbstraction: config.thirdweb.accountAbstraction,
       });

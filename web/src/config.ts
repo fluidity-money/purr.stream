@@ -1,6 +1,7 @@
 import { abi } from "#/abis/donation";
 import { createThirdwebClient } from "thirdweb";
 import { getContract } from "thirdweb";
+import { createWallet, inAppWallet } from "thirdweb/wallets";
 
 const net = (process.env.NEXT_PUBLIC_NET ?? "testnet") as "mainnet" | "testnet";
 const clientId = process.env.NEXT_PUBLIC_THIRDWEB_ID;
@@ -41,6 +42,16 @@ const metadata = {
     "blockchain",
   ],
 };
+const wallets = [
+  inAppWallet({
+    smartAccount: {
+      chain: chains.superposition[net],
+      sponsorGas: true,
+    },
+  }),
+  createWallet("io.metamask"),
+  createWallet("io.rabby"),
+];
 const thirdwebClient = createThirdwebClient({
   clientId,
 });
@@ -83,6 +94,7 @@ export const config = {
       chain: chains.superposition[net],
       sponsorGas: true,
     },
+    wallets,
     appMetadata: {
       name: metadata.title as string,
       url: metadata.metadataBase?.href,
