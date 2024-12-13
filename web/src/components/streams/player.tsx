@@ -27,11 +27,11 @@ export default function StreamPlayer() {
 
     let hls: Hls | null;
     // Cat streams this mimeType
-    const mimeType = 'application/vnd.apple.mpegurl;codecs="hev1"';
+    const mimeType = 'application/vnd.apple.mpegurl;codecs="hev1"'
     if (video.canPlayType(mimeType)) {
       video.src = src;
     } else if (Hls.isSupported()) {
-      const hls = new Hls();
+      hls = new Hls();
       hls.loadSource(src);
       hls.attachMedia(video);
     }
