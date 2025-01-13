@@ -55,7 +55,7 @@ export default function LeaderItem({
       </div>
       <div className="flex h-10 items-center gap-6">
         <p className="inline-flex flex-col items-start justify-center gap-0.5">
-          <span className="text-xs font-medium text-neutral-400">$SPN</span>
+          <span className="text-xs font-medium text-neutral-400">$ETH</span>
           <span className="text-base font-bold">{data.score}</span>
         </p>
         <p className="flex flex-col items-start justify-center gap-0.5">
