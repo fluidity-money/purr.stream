@@ -14,7 +14,7 @@ export default function DonationLevel() {
   const donationClicks = useUserStore((s) => s.donationClicks);
   const donationQueue = useUserStore((s) => s.donationQueue);
   const curr = donationQueue[0];
-  const totalDonation = donationClicks * 0.0001;
+  const totalDonation = donationClicks * 0.00001;
 
   useEffect(() => {
     if (curr?.id && account) {
@@ -63,7 +63,7 @@ export default function DonationLevel() {
         <span className="text-xs font-bold text-neutral-500 md:text-sm">
           Donation
         </span>
-        {totalDonation.toFixed(3)}
+        {totalDonation.toFixed(4)}
       </div>
     </div>
   );
