@@ -63,7 +63,7 @@ export default function DonateButton() {
       {isConnecting ? (
         <Loader />
       ) : (
-        <div className="text-xl font-bold text-tint">❤️ Donate!</div>
+        <div className="text-xl font-bold text-tint">❤️ Donate 0.00001!</div>
       )}
     </button>
   );
