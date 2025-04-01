@@ -125,7 +125,7 @@ export async function handleDonation(id: string, account: Account) {
       method: config.contracts.donation.abi[2].name,
       params: [`0x${hash}`],
       value: toUnits(
-        (config.features.web3.donation.clickUnit * donation).toFixed(3),
+        (config.features.web3.donation.clickUnit * donation).toFixed(18),
         18,
       ),
     });

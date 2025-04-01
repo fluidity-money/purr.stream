@@ -9,12 +9,14 @@ import Image from "next/image";
 import CatLoading from "#/images/icons/cat-loading.svg";
 import CatSuccess from "#/images/icons/cat-succes.svg";
 import CatError from "#/images/icons/cat-error.svg";
+import { config } from "@/config";
 export default function DonationLevel() {
   const account = useActiveAccount();
   const donationClicks = useUserStore((s) => s.donationClicks);
   const donationQueue = useUserStore((s) => s.donationQueue);
   const curr = donationQueue[0];
-  const totalDonation = donationClicks * 0.00001;
+  const totalDonation = donationClicks * config.features.web3.donation.displayUnit;
+  const totalDonationInETH = donationClicks * config.features.web3.donation.clickUnit;
 
   useEffect(() => {
     if (curr?.id && account) {
@@ -40,7 +42,7 @@ export default function DonationLevel() {
               {item.status === "error" ? (
                 <div className="size-5">✖️</div>
               ) : null}
-              {item.donation * 0.0001}
+              ${item.donation * config.features.web3.donation.displayUnit}
               <Image
                 src={
                   item.status === "loading"
@@ -63,7 +65,8 @@ export default function DonationLevel() {
         <span className="text-xs font-bold text-neutral-500 md:text-sm">
           Donation
         </span>
-        {totalDonation.toFixed(4)}
+        <span>${totalDonation.toFixed(2)}</span>
+        <span className="text-xs text-neutral-500 text-center">ETH{totalDonationInETH.toFixed(6)}</span>
       </div>
     </div>
   );

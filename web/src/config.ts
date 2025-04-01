@@ -80,7 +80,8 @@ export const config = {
     web3: {
       all: true,
       donation: {
-        clickUnit: 0.00001,
+        clickUnit: 0.000006,
+        displayUnit: 0.01,
         debounceTime: 800,
       },
     },
