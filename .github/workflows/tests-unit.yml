@@ -24,9 +24,14 @@ jobs:
       - uses: actions/setup-node@v4
         with:
           node-version: 20.15.0
-
+      
       - name: Enable pnpm
-        run: corepack enable pnpm
+        run: |
+            echo "Before: corepack version => $(corepack --version || echo 'not installed')"
+            npm install -g corepack@latest
+            echo "After : corepack version => $(corepack --version)"
+            corepack enable pnpm
+            pnpm --version
       
       - name: Prepare pnpm
         run: corepack prepare pnpm@9.15.9 --activate
