@@ -63,7 +63,9 @@ export default function DonateButton() {
       {isConnecting ? (
         <Loader />
       ) : (
-        <div className="text-xl font-bold text-tint text-nowrap">❤️ Donate ${config.features.web3.donation.displayUnit}!</div>
+        <div className="text-nowrap text-xl font-bold text-tint">
+          ❤️ Donate ${config.features.web3.donation.displayUnit}!
+        </div>
       )}
     </button>
   );

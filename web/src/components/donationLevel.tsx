@@ -15,8 +15,10 @@ export default function DonationLevel() {
   const donationClicks = useUserStore((s) => s.donationClicks);
   const donationQueue = useUserStore((s) => s.donationQueue);
   const curr = donationQueue[0];
-  const totalDonation = donationClicks * config.features.web3.donation.displayUnit;
-  const totalDonationInETH = donationClicks * config.features.web3.donation.clickUnit;
+  const totalDonation =
+    donationClicks * config.features.web3.donation.displayUnit;
+  const totalDonationInETH =
+    donationClicks * config.features.web3.donation.clickUnit;
 
   useEffect(() => {
     if (curr?.id && account) {
@@ -66,7 +68,9 @@ export default function DonationLevel() {
           Donation
         </span>
         <span>${totalDonation.toFixed(2)}</span>
-        <span className="text-xs text-neutral-500 text-center">ETH{totalDonationInETH.toFixed(6)}</span>
+        <span className="text-center text-xs text-neutral-500">
+          ETH{totalDonationInETH.toFixed(6)}
+        </span>
       </div>
     </div>
   );
