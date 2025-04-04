@@ -67,9 +67,9 @@ export default function DonationLevel() {
         <span className="text-xs font-bold text-neutral-500 md:text-sm">
           Donation
         </span>
-        <span>${totalDonation.toFixed(2)}</span>
+        <span>${totalDonation.toFixed(1)}</span>
         <span className="text-center text-xs text-neutral-500">
-          ETH{totalDonationInETH.toFixed(6)}
+          ETH{totalDonationInETH.toFixed(5)}
         </span>
       </div>
     </div>
